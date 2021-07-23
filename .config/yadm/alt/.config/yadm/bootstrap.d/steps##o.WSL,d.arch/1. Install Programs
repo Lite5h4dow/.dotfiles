@@ -1,3 +1,35 @@
 #!/bin/bash
 
-echo "this will install my applications"
+cd $HOME
+
+echo "1. Installing Standard Applictions"
+
+if ! command -v git &> /dev/null 
+then
+	echo "git wasnt found... how did you get here?"
+	exit
+fi
+
+if ! command -v yay &> /dev/null 
+then
+	echo "yay AUR helper wasnt found. building...."
+	git clone https://aur.archlinux.org/yay.git $HOME/tmp/yay
+	cd $HOME/tmp/yay
+	makepkg -sic
+	cd ..
+	rm -rf yay
+	cd $HOME
+fi
+echo "doing full system update..."
+yay -Syu && echo "Complete!"
+
+echo "installing default applications"
+
+if eval "yay -S --noconfirm nvm-git dvm-bin zsh zsh-theme-powerlevel10k-git"
+then
+	echo "successfully installed:\n - Node Version Manager\n - Deno Version Manager\n - ZSH\n - Powerlevel10k" 
+	echo "adding powerlevel10k to zshrc"
+else
+	echo "failed to install. please check yay's error for the problem. exiting."
+	exit
+fi
