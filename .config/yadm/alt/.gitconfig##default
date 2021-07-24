@@ -5,3 +5,5 @@
 [user]
 	email = lite5h4dow@gmail.com
 	name = Lamar Daughma
+[pull]
+	rebase = false
