@@ -12,7 +12,7 @@ fi
 if ! command -v yay &> /dev/null; then
 	echo "yay AUR helper wasnt found. building...."
 	git clone https://aur.archlinux.org/yay.git $HOME/tmp/yay
-	if ! [ $? -eq 0 ]; then; exit 1; fi
+	if ! [ $? -eq 0 ]; then exit 1; fi
 	cd $HOME/tmp/yay
 	makepkg -sic --noconfirm
 	if ! [ $? -eq 0 ]; then
@@ -26,7 +26,7 @@ fi
 
 echo "doing full system update..."
 
-if ! [eval "yay -Syu --noconfirm"]; then
+if ! eval "yay -Syu --noconfirm"; then
 	exit 1
 fi
 
@@ -45,7 +45,7 @@ echo 'source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme' >> ~/.z
 
 echo "setting default terminal"
 
-if eval "chsh -s $(which zsh)"; then
+if eval "chsh -s '/usr/bin/zsh'"; then
 	echo "Switched successfully"
 else
 	echo "failed to switch. non fatal"
