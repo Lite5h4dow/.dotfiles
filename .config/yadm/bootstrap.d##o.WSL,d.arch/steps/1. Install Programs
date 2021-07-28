@@ -33,7 +33,7 @@ fi
 
 echo "installing default applications"
 
-if eval "yay -S --noconfirm nvm-git dvm-bin zsh zsh-theme-powerlevel10k-git"; then
+if eval "yay -S --noconfirm nvm-git dvm-bin zsh zsh-theme-powerlevel10k-git neovim-nightly-bin"; then
 	echo "successfully installed:\n - Node Version Manager\n - Deno Version Manager\n - ZSH\n - Powerlevel10k"
 else
 	echo "failed to install. please check yay's error for the problem. exiting."
