@@ -34,7 +34,7 @@ fi
 echo "installing default applications"
 
 if eval "yay -S --noconfirm nvm-git dvm-bin zsh zsh-theme-powerlevel10k-git neovim-nightly-bin"; then
-	echo "successfully installed:\n - Node Version Manager\n - Deno Version Manager\n - ZSH\n - Powerlevel10k"
+	printf "successfully installed:\n - Node Version Manager\n - Deno Version Manager\n - ZSH\n - Powerlevel10k\n - Neovim\n"
 else
 	echo "failed to install. please check yay's error for the problem. exiting."
 	exit 1
@@ -43,10 +43,13 @@ fi
 echo "adding powerlevel10k to zshrc"
 echo 'source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
 
-echo "setting default terminal"
-
-if eval "chsh -s '/usr/bin/zsh'"; then
-	echo "Switched successfully"
-else
-	echo "failed to switch. non fatal"
+if [ $SHELL != "/usr/bin/zsh" ]; then
+	echo "default shell isnt ZSH... changing default shell"
+	if eval "chsh -s '/usr/bin/zsh'"; then
+		echo "Switched successfully"
+	else
+		echo "failed to switch. non fatal"
+	fi
 fi
+
+

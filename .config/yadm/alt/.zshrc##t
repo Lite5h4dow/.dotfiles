@@ -24,3 +24,6 @@ export DISPLAY=$WSL_IP:0.0
 #-----Initialise Node Version Manager -----
 source /usr/share/nvm/init-nvm.sh
 
+#-----Initialise Deno Version Manager -----
+export DENO_INSTALL="$HOME/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
