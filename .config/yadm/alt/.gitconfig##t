@@ -12,3 +12,7 @@
 {% endif %}
 [pull]
 	rebase = false
+{% if yadm.os == "WSL" %}
+[credential]
+	helper = /mnt/c/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-manager-core.exe
+{% endif %}
