@@ -1,8 +1,12 @@
 local map = vim.api.nvim_set_keymap
+local a = vim.api
+local v = vim.v
 
 map('n', '<Space>', '', {})
 vim.g.mapleader = ' ' -- global leader is space
 
 options = {noremap = true}
 map('n', '<C-p>', ':Files<cr>', options)
+-- map('n', '<C-p>', a.nvim_open_win(, v.true))
 map('n', '<Leader><Esc>', ':Limelight!!<cr>', options)
+map('n', '<C-f>', ':Ag<cr>', options)

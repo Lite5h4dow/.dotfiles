@@ -14,6 +14,7 @@ g.auto_save = true
 -- Set Indention Depth
 o.shiftwidth = 2
 
+require 'neovide.lua'
 require 'plugins.lua'
 require 'rebinds.lua'
 require 'limelight.lua'
