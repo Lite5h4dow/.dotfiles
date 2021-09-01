@@ -3,7 +3,7 @@ local o = vim.o
 local g = vim.g
 
 -- Enable Line numbers
-o.numbers = true
+o.number = true
 
 -- Set font to "FiraCode NerdFonts Monospaced"
 o.guifont = "FuraCode NF"
@@ -15,3 +15,5 @@ g.auto_save = true
 o.shiftwidth = 2
 
 require 'plugins.lua'
+require 'rebinds.lua'
+require 'limelight.lua'

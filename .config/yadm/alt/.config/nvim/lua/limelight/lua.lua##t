@@ -1,0 +1,10 @@
+local g = vim.g
+
+g.limelight_conceal_ctermfg = 'gray'
+g.limelight_conceal_ctermfg = 240
+
+g.limelight_conceal_guifg = 'DarkGray'
+g.limelight_conceal_guifg = '#777777'
+
+g.limelight_default_coefficient = 0.5
+
