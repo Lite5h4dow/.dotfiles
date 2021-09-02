@@ -1,0 +1,36 @@
+#!/bin/bash
+
+cd $HOME
+
+if ! command -v brew &> /dev/null; then
+  echo "Brew Package manager wasnt found. building..."
+  echo | $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh) &> /dev/null
+  if ! [ $? -eq 0 ]; then exit 1; fi
+fi
+
+if eval "brew install nvm deno zsh romkatv/powerlevel10k/powerlevel10k neovim lua luajit rustup the_silver_searcher &> /dev/null"; then
+  printf "successfully installed:\n - Node Version Manager\n - Deno Version Manager\n - ZSH\n - Powerlevel10k\n - Neovim\n - Lua & LuaJIT\n - Rustup\n - The Silver Searcher\n"
+else
+  echo "failed to install. please check yay's error for the problem. exiting."
+  exit 1
+fi
+
+echo "adding powerlevel10k to zshrc..."
+echo "source $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
+
+if [ $SHELL != "/usr/local/bin/zsh" ]; then
+  echo "default shell isnt local ZSH... changing shell..."
+  if eval "chsh -s '/usr/local/bin/zsh'"; then
+    echo "switched successfully"
+  else
+    echo "failed to switch. non fatal. continuing"
+  fi
+fi
+
+echo "installing default rust version..."
+if eval "rustup default stable &> /dev/null"; then
+  echo "installed successfully"
+else
+  echo "rustup failed to install stable version"
+  exit 1
+fi
