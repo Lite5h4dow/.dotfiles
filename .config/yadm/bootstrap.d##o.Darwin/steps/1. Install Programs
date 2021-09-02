@@ -2,6 +2,8 @@
 
 cd $HOME
 
+echo "1. Install Programs"
+
 if ! command -v brew &> /dev/null; then
   echo "brew Package manager wasnt found. building..."
   echo | $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh) &> /dev/null
