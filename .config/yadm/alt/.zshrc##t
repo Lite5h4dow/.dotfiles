@@ -22,7 +22,14 @@ export DISPLAY=$WSL_IP:0.0
 {% endif %}
 
 #-----Initialise Node Version Manager -----
+{% if yadm.os == "WSL" %}
 source /usr/share/nvm/init-nvm.sh
+{% endif %}
+{% if yadm.os == "Darwin" %}
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+{% endif %}
 
 #-----Initialise Deno Version Manager -----
 export DENO_INSTALL="$HOME/.deno"

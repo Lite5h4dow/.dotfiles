@@ -1,7 +1,7 @@
 local fn = vim.fn
 
 -- Packer Boostrap 
-local install_path = fn.stdpath('data')..'site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
   fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
   vim.cmd 'packeradd packer.nvim'
@@ -25,9 +25,15 @@ return require('packer').startup(
     use {'junegunn/vim-easy-align'}
 
     -- deoplete
-    use {'Shougo/deoplete.nvim', run=':UpdateRemotePlugins'}
+    -- use {'Shougo/deoplete.nvim', run=':UpdateRemotePlugins'}
 
     -- autoclose
     use {'townk/vim-autoclose'}
+
+    -- coc
+    use {'neoclide/coc.nvim', branch = 'release'}
+
+    -- cocfzf
+    use {'antoinemadec/coc-fzf', branch = 'release'}
   end
 )
