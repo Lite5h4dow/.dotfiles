@@ -27,4 +27,4 @@ map('n', '<C-l>', '<C-w><C-l>', options)
 g.fzf_action = {'ctrl-s': 'split', 'ctrl-v': 'vsplit'}
 
 -- find selected (fzf)
-map('v', '<C-S-f>', 'y<ESC>:ag <C-r>"' )
+map('v', '<C-S-f>', 'y<ESC>:ag <C-r>"', options )
