@@ -15,7 +15,7 @@ map('n', '<C-p>', ':Files<cr>', options)
 map('n', '<Leader><Esc>', ':Limelight!!<cr>', options)
 
 -- find file by string
-map('n', '<C-S-f>', ':Ag<cr>', options)
+map('n', '<C-f>', ':Ag<cr>', options)
 
 -- move between splits
 map('n', '<C-j>', '<C-w><C-j>', options)
@@ -26,4 +26,4 @@ map('n', '<C-l>', '<C-w><C-l>', options)
 -- open in splits (fzf)
 
 -- find selected (fzf)
-map('v', '<C-S-f>', 'ay<ESC>:ag <C-r>a', options )
+map('v', '<C-f>', 'ay<ESC>:ag <C-r>a', options )
