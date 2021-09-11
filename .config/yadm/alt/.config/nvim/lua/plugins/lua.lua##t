@@ -38,5 +38,13 @@ return require('packer').startup(
 
     -- gruvbox theme
     use {'morhetz/gruvbox'}
+
+    -- galaxyline setup
+    use {
+      'glepnir/galaxyline.nvim',
+      branch = 'main',
+      config = function()require'galaxyline.lua'end,
+      requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    }
   end
 )

@@ -23,7 +23,5 @@ map('n', '<C-k>', '<C-w><C-k>', options)
 map('n', '<C-h>', '<C-w><C-h>', options)
 map('n', '<C-l>', '<C-w><C-l>', options)
 
--- open in splits (fzf)
-
 -- find selected (fzf)
 map('v', '<C-f>', 'y<ESC>:Ag <C-r>"<cr>', options )
