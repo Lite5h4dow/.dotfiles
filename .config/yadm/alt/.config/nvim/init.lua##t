@@ -17,6 +17,10 @@ o.shiftwidth = 2
 -- Set Gruvbox as colorscheme
 vim.cmd('colorscheme gruvbox')
 
+-- set split opening directions
+o.splitbelow = true
+o.splitright = true
+
 require 'neovide.lua'
 require 'plugins.lua'
 require 'rebinds.lua'
