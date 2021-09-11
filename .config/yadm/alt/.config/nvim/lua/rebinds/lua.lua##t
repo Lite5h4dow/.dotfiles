@@ -18,10 +18,10 @@ map('n', '<Leader><Esc>', ':Limelight!!<cr>', options)
 map('n', '<C-f>', ':Ag<cr>', options)
 
 -- move between splits
-map('n', '<C-j>', '<C-w><C-j>', options)
-map('n', '<C-k>', '<C-w><C-k>', options)
-map('n', '<C-h>', '<C-w><C-h>', options)
-map('n', '<C-l>', '<C-w><C-l>', options)
+map('n', '<A-j>', '<C-w><C-j>', options)
+map('n', '<A-k>', '<C-w><C-k>', options)
+map('n', '<A-h>', '<C-w><C-h>', options)
+map('n', '<A-l>', '<C-w><C-l>', options)
 
 -- find selected (fzf)
 map('v', '<C-f>', 'y<ESC>:Ag <C-r>"<cr>', options )
@@ -32,4 +32,11 @@ map('i', '<C-S-CR>', '<ESC>O', options) -- insert line above while editing
 
 -- open terminal
 map('n', '<Leader><CR>', ':split | resize 10 | term<CR>', options)
-map('t', '<C-S-q>', '<C-\\><C-n>', options)
+
+-- navigate while terminal is open
+map('t', '<ESC>', '<C-\\><C-n>', options) -- escape to normal mode
+map('t', '<A-h>', '<C-\\><C-n><C-w><C-h>', options) -- escape to the left
+map('t', '<A-j>', '<C-\\><C-n><C-w><C-j>', options) -- escape to the down
+map('t', '<A-k>', '<C-\\><C-n><C-w><C-k>', options) -- escape to the up
+map('t', '<A-l>', '<C-\\><C-n><C-w><C-l>', options) -- escape to the right
+
