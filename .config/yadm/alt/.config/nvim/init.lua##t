@@ -14,9 +14,6 @@ g.auto_save = true
 -- Set Indention Depth
 o.shiftwidth = 2
 
--- Set Gruvbox as colorscheme
-vim.cmd('colorscheme gruvbox')
-
 -- set split opening directions
 o.splitbelow = true
 o.splitright = true
@@ -30,3 +27,6 @@ require 'plugins.lua'
 require 'rebinds.lua'
 require 'limelight.lua'
 require 'fzf.lua'
+
+-- Set Gruvbox as colorscheme
+vim.cmd('colorscheme gruvbox')
