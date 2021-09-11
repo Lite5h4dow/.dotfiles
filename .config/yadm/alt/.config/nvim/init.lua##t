@@ -21,6 +21,10 @@ vim.cmd('colorscheme gruvbox')
 o.splitbelow = true
 o.splitright = true
 
+-- auto reload on file change
+o.autoread = true
+
+-- extended configs
 require 'neovide.lua'
 require 'plugins.lua'
 require 'rebinds.lua'

@@ -1,4 +1,5 @@
 local fn = vim.fn
+local g = vim.g
 
 -- Packer Boostrap 
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -8,6 +9,18 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 local packer_exists = pcall(vim.cmd, [[packeradd packer.nvim]])
+
+g.coc_global_extensions ={ 
+  "coc-deno",
+  "coc-tsserver",
+  "coc-css",
+  "coc-sh",
+  "coc-html",
+  "coc-json",
+  "coc-rust-analyzer",
+  "coc-cmake",
+  "coc-git"
+}
 
 -- Packer setup
 return require('packer').startup(
