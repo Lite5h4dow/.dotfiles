@@ -25,3 +25,7 @@ map('n', '<C-l>', '<C-w><C-l>', options)
 
 -- find selected (fzf)
 map('v', '<C-f>', 'y<ESC>:Ag <C-r>"<cr>', options )
+
+-- convenient insert mode enter rebinds
+map('i', '<C-CR>', '<ESC>o', options) -- insert line below while editing
+map('i', '<C-S-CR>', '<ESC>O', options) -- insert line above while editing
