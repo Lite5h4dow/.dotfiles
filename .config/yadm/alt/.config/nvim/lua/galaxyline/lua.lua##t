@@ -1,1 +1,23 @@
+local gl = require('galaxyline')
+
 -- my galaxyline config
+
+local colors = {
+  bg = '#282a36',
+  fg = '#f8f8f2',
+  section_bg = '#38393f',
+  yellow = '#f1fa8c',
+  cyan = '#8be9fd',
+  green = '#50fa7b',
+  orange = '#ffb86c',
+  magenta = '#ff79c6',
+  blue = '#8be9fd',
+  red = '#ff5555'
+}
+
+gls.left[1] = {
+  FirstElement = {
+    provider = function() return '▋' end,
+    highlight = { colors.cyan, colors.section_bg }
+  },
+}
