@@ -26,7 +26,7 @@ local mode_color = function()
     i = colors.green,
     c = colors.orange,
     V = colors.magenta,
-    [''] = colors.magenta,
+    [' '] = colors.magenta,
     v = colors.magenta,
     R = colors.red,
   }
