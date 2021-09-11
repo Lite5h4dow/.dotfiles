@@ -34,7 +34,7 @@ map('i', '<C-S-CR>', '<ESC>O', options) -- insert line above while editing
 map('n', '<Leader><CR>', ':split | resize 10 | term<CR>', options)
 
 -- navigate while terminal is open
-map('t', '<ESC>', '<C-\\><C-n>', options) -- escape to normal mode
+map('t', '<A-ESC>', '<C-\\><C-n>', options) -- escape to normal mode
 map('t', '<A-h>', '<C-\\><C-n><C-w><C-h>', options) -- escape to the left
 map('t', '<A-j>', '<C-\\><C-n><C-w><C-j>', options) -- escape to the down
 map('t', '<A-k>', '<C-\\><C-n><C-w><C-k>', options) -- escape to the up
