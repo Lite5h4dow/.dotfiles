@@ -66,7 +66,8 @@ gls.left[2] ={
 	V = 'VISUAL',
 	[' '] = 'VISUAL',
 	v = 'VISUAL',
-	R = 'REPLACE'
+	R = 'REPLACE',
+	t = 'TERMINAL'
       } 
 
       api.nvim_command('hi GalaxyViMode guifg='..mode_color())
