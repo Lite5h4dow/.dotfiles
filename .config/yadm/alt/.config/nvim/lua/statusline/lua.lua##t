@@ -1,0 +1,84 @@
+local gl = require('galaxyline')
+local gls = gl.section
+
+local fn = vim.fn
+local api = vim.api
+-- my galaxyline config
+
+-- ripped colours, need to make my own config
+local colors = {
+  bg = '#282a36',
+  fg = '#f8f8f2',
+  section_bg = '#38393f',
+  yellow = '#f1fa8c',
+  cyan = '#8be9fd',
+  green = '#50fa7b',
+  orange = '#ffb86c',
+  magenta = '#ff79c6',
+  blue = '#8be9fd',
+  red = '#ff5555'
+}
+
+-- ripped mode color function.
+local mode_color = function()
+  local mode_colors = {
+    n = colors.cyan,
+    i = colors.green,
+    c = colors.orange,
+    V = colors.magenta,
+    [' '] = colors.magenta,
+    v = colors.magenta,
+    R = colors.red,
+  }
+
+  local color = mode_colors[vim.fn.mode()]
+
+  if color == nil then
+    color = colors.red
+  end
+
+  return color
+end
+
+-- see if file is in git repo
+local in_git_repo = function ()
+  local vcs = require('galaxyline.provider_vcs')
+  local branch_name = vcs.get_git_branch()
+
+  return branch_name ~= nil
+end
+
+-- start seperator, test code to make sure it worked
+gls.left[1] = {
+  FirstElement = {
+    provider = function() return '▋' end,
+    highlight = { colors.cyan, colors.section_bg }
+  },
+}
+
+gls.left[2] ={
+  ViMode = {
+    provider = function()
+      local alias = {
+	n = 'NORMAL',
+	i = 'INSERT',
+	c = 'COMMAND',
+	V = 'VISUAL',
+	[' '] = 'VISUAL',
+	v = 'VISUAL',
+	R = 'REPLACE',
+	t = 'TERMINAL'
+      } 
+
+      api.nvim_command('hi GalaxyViMode guifg='..mode_color())
+      local alias_mode = alias[fn.mode()]
+      if alias_mode == nil then
+	alias_mode = fn.mode()
+      end
+      return alias_mode..' '
+    end,
+    highlight = { colors.bg, colors.bg },
+    separator = "  ",
+    separator_highlight = {colors.bg, colors.section_bg},
+  }
+}

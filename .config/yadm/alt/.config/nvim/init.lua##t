@@ -14,8 +14,19 @@ g.auto_save = true
 -- Set Indention Depth
 o.shiftwidth = 2
 
+-- set split opening directions
+o.splitbelow = true
+o.splitright = true
+
+-- auto reload on file change
+o.autoread = true
+
+-- extended configs
 require 'neovide.lua'
 require 'plugins.lua'
 require 'rebinds.lua'
 require 'limelight.lua'
 require 'fzf.lua'
+
+-- Set Gruvbox as colorscheme
+vim.cmd('colorscheme gruvbox')
