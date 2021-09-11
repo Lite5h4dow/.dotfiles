@@ -32,3 +32,4 @@ map('i', '<C-S-CR>', '<ESC>O', options) -- insert line above while editing
 
 -- open terminal
 map('n', '<Leader><CR>', ':split | resize 10 | term<CR>', options)
+map('t', '<C-S-q>', '<C-\\><C-n>', options)
