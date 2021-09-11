@@ -15,7 +15,7 @@ g.auto_save = true
 o.shiftwidth = 2
 
 -- Set Gruvbox as colorscheme
-o.colorscheme = 'gruvbox'
+vim.cmd('colorscheme gruvbox')
 
 require 'neovide.lua'
 require 'plugins.lua'
