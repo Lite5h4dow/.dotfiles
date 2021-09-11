@@ -35,5 +35,8 @@ return require('packer').startup(
 
     -- cocfzf
     use {'antoinemadec/coc-fzf', branch = 'release'}
+
+    -- gruvbox theme
+    use {'morhetz/gruvbox'}
   end
 )
