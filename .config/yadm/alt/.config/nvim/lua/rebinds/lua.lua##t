@@ -41,4 +41,4 @@ map('t', '<A-k>', '<C-\\><C-n><C-w><C-k>', options) -- escape to the up
 map('t', '<A-l>', '<C-\\><C-n><C-w><C-l>', options) -- escape to the right
 
 -- Coc Rebinds
-map('n', '<Leader-h>', ':call CocActionAsync("doHover")<cr>', options)
+map('n', '<Leader>h', ':call CocActionAsync("doHover")<cr>', options)
