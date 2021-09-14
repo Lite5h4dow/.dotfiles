@@ -34,6 +34,9 @@ export DISPLAY=$WSL_IP:0.0
 {% if yadm.os == "WSL" %}
 source /usr/share/nvm/init-nvm.sh
 {% endif %}
+{% if yadm.os == "Linux" %}
+source /usr/share/nvm/init-nvm.sh
+{% endif %}
 {% if yadm.os == "Darwin" %}
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
