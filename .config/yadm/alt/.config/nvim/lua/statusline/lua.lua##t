@@ -48,6 +48,14 @@ local in_git_repo = function ()
   return branch_name ~= nil
 end
 
+-- make sure buffer isnt empty
+local buffer_not_empty = function()
+  if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then
+    return true
+  end
+  return false
+end
+
 -- start seperator, test code to make sure it worked
 gls.left[1] = {
   FirstElement = {
@@ -82,3 +90,11 @@ gls.left[2] ={
     separator_highlight = {colors.bg, colors.section_bg},
   }
 }
+
+gls.mid[1] = {
+  FileName ={ 
+    provider = {'FileName', 'FileSize'},
+    condition = buffer_not_empty
+  }
+}
+
