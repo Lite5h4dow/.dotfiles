@@ -78,7 +78,7 @@ gls.left[2] ={
       return alias_mode..' '
     end,
     highlight = { colors.bg, colors.bg },
-    separator = "  ",
+    separator = " ",
     separator_highlight = {colors.bg, colors.section_bg},
   }
 }
