@@ -10,8 +10,8 @@ if ! command -v brew &> /dev/null; then
   if ! [ $? -eq 0 ]; then exit 1; fi
 fi
 
-if eval "brew install nvm deno zsh romkatv/powerlevel10k/powerlevel10k neovim lua luajit rustup  the_silver_searcher  &> /dev/null"; then
-  printf "successfully installed:\n - Node Version Manager\n - Deno Version Manager\n - ZSH\n - Powerlevel10k\n - Neovim\n - Lua & LuaJIT\n - Rustup\n - The Silver Searcher\n"
+if eval "brew install nvm deno zsh romkatv/powerlevel10k/powerlevel10k neovim lua luajit rustup the_silver_searcher exa &> /dev/null"; then
+  printf "successfully installed:\n - Node Version Manager\n - Deno\n - ZSH\n - Powerlevel10k\n - Neovim\n - Lua & LuaJIT\n - Rustup\n - The Silver Searcher\n - Exa\n"
 else
   echo "failed to install. please check yay's error for the problem. exiting."
   exit 1
