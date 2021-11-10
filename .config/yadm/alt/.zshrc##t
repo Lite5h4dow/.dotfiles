@@ -47,5 +47,9 @@ export NVM_DIR="$HOME/.nvm"
 alias ls="exa --icons"
 
 #-----zsh-autosuggestions-----
-source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-ZSH_AUTOSUGGEST_STRATEGY=(completion)
+#source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+#ZSH_AUTOSUGGEST_STRATEGY=(completion)
+
+#-----zsh-autocomplete-----
+source ~/Git/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+

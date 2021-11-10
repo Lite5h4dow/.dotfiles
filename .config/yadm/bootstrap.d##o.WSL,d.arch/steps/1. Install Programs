@@ -54,13 +54,21 @@ fi
 
 if [ ! -d "~/.config/zsh/plugins/zsh-autosuggestions" ]; then
   echo "installing zsh-autosuggestions..."
-  git clone https://github.com/zsh-users/zsh-autosuggestions ~/.config/zsh/plugins/zsh-autosuggestions
+  git clone https://github.com/zsh-users/zsh-autosuggestions ~/.config/zsh/plugins/zsh-autosuggestions &> /dev/null
   if ! [ $? -eq 0 ]; then exit 1; fi
 else
-  echo "updating zsh-autosuggestions"
+  echo "updating zsh-autosuggestions..."
   cd ~/.config/zsh/plugins/zsh-autosuggestions; git fetch && git pull; cd $HOME
 fi
 
+if [ ! -d "~/.config/zsh/plugins/zsh-autocomplete" ]; then
+  echo "installing zsh-autocomplete..."
+  git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git ~/.config/zsh/plugins/zsh-autocomplete &> /dev/null
+  if ! [ $? -eq 0 ]; then exit 1; fi
+else
+  echo "updating zsh-autocomplete..."
+  git -C ~zsh-autocomplete pull
+fi
 
 echo "installing default rust version..."
 if eval "rustup default stable &> /dev/null"; then
