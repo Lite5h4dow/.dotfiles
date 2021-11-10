@@ -55,5 +55,6 @@ zstyle ':autocomplete:*' list-lines 5
 zstyle ':autocomplete:history-search:*' list-lines 5
 zstyle ':autocomplete:history-incremental-search-*:*' list-lines 5
 zstyle ':autocomplete:*' min-input 1
+zstyle ':autocomplete:*' fzf-completion yes
 source ~/.config/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
