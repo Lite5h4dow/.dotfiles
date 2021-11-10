@@ -48,3 +48,4 @@ alias ls="exa --icons"
 
 #-----zsh-autosuggestions-----
 source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+ZSH_AUTOSUGGEST_STRATEGY=(completion)
