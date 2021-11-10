@@ -43,6 +43,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 {% endif %}
 
-#-----Initialise Deno Version Manager -----
-export DENO_INSTALL="$HOME/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
+#-----Initialise Exa as ls-----
+alias ls="exa --icons"
