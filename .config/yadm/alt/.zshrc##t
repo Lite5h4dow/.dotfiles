@@ -44,7 +44,7 @@ export NVM_DIR="$HOME/.nvm"
 {% endif %}
 
 #-----Add local bin-----
-export PATH=$PATH/.local/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 #-----Initialise Exa as ls-----
 alias ls="exa --icons"
