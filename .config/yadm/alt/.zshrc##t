@@ -43,6 +43,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 {% endif %}
 
+#-----Add local bin-----
+export PATH=$PATH/.local/bin:$PATH
+
 #-----Initialise Exa as ls-----
 alias ls="exa --icons"
 
@@ -57,4 +60,3 @@ zstyle ':autocomplete:history-incremental-search-*:*' list-lines 5
 zstyle ':autocomplete:*' min-input 1
 zstyle ':autocomplete:*' fzf-completion yes
 source ~/.config/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-
