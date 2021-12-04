@@ -33,7 +33,7 @@ fi
 
 echo "installing default applications..."
 
-if eval "yay -S --noconfirm nvm-git deno zsh zsh-theme-powerlevel10k-git neovim-nightly-bin lua luajit rustup the_silver_searcher exa &> /dev/null"; then
+if eval "yay -S --noconfirm nvm-git deno zsh zsh-theme-powerlevel10k-git neovim lua luajit rustup the_silver_searcher exa &> /dev/null"; then
 	printf "successfully installed:\n - Node Version Manager\n - Deno\n - ZSH\n - Powerlevel10k\n - Neovim\n - Lua & LuaJIT\n - Rustup\n - The Silver Searcher\n - Exa\n"
 else
 	echo "failed to install. please check yay's error for the problem. exiting."
