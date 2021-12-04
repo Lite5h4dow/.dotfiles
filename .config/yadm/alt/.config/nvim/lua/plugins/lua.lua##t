@@ -20,7 +20,7 @@ g.coc_global_extensions ={
   "coc-rust-analyzer",
   "coc-cmake",
   "coc-git",
-  "pyright"
+  "coc-pyright"
 }
 
 -- Packer setup
