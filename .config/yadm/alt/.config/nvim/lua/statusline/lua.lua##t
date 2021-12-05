@@ -92,8 +92,17 @@ gls.left[2] ={
 }
 
 gls.mid[1] = {
+  FileIcon = {
+    provider = 'FileIcon',
+    condition = buffer_not_empty,
+    highlight = { require('galaxyline.provider_fileinfo').get_file_icon_color, colors.section_bg },
+  },
+}
+gls.mid[2] = {
   FileName ={ 
-    provider = {'FileName', 'FileSize'},
+    provider = function ()
+      return vim.fn.expand('%f')
+    end,
     condition = buffer_not_empty
   }
 }
