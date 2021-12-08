@@ -30,6 +30,9 @@ map('v', '<C-f>', 'y<ESC>:Ag <C-r>"<cr>', options )
 map('i', '<C-CR>', '<ESC>o', options) -- insert line below while editing
 map('i', '<C-S-CR>', '<ESC>O', options) -- insert line above while editing
 
+map('n', '<C-CR>', 'o<ESC>', options) --insert line below in normal mode
+map('n', '<C-S-CR>', 'O<ESC>', options) --insert line below in normal mode
+
 -- open terminal
 map('n', '<Leader><CR>', ':split | resize 10 | term<CR>', options)
 
