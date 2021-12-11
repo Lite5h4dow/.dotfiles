@@ -43,5 +43,14 @@ map('t', '<A-j>', '<C-\\><C-n><C-w><C-j>', options) -- escape to the down
 map('t', '<A-k>', '<C-\\><C-n><C-w><C-k>', options) -- escape to the up
 map('t', '<A-l>', '<C-\\><C-n><C-w><C-l>', options) -- escape to the right
 
+-- Auto Comment
+map('i', '<C-/>', ':AutoInlineComment<CR>', options) -- autocomment line in insert mode
+map('n', '<C-/>', ':AutoInlineComment<CR>', options) -- autocomment line in normal mode
+map('v', '<C-/>', ':AutoInlineComment<CR>', options) -- autocomment line in visual mode
+
+map('i', '<C-S-/>', ':AutoBlockComment<CR>', options) -- autocomment block in insert mode
+map('n', '<C-S-/>', ':AutoBlockComment<CR>', options) -- autocomment block in normal mode
+map('v', '<C-S-/>', ':AutoBlockComment<CR>', options) -- autocomment block in visual mode
+
 -- Coc Rebinds
 map('n', '<Leader>h', ':call CocActionAsync("doHover")<cr>', options)
