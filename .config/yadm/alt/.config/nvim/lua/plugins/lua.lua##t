@@ -41,6 +41,9 @@ return require('packer').startup(
     -- deoplete
     -- use {'Shougo/deoplete.nvim', run=':UpdateRemotePlugins'}
 
+    -- Auto comment
+    use {'KarimElghamry/vim-auto-comment'}
+
     -- autoclose
     use {'townk/vim-autoclose'}
 
