@@ -19,91 +19,167 @@ local colors = {
   red = '#ff5555'
 }
 
--- ripped mode color function.
-local mode_color = function()
-  local mode_colors = {
-    n = colors.cyan,
-    i = colors.green,
-    c = colors.orange,
-    V = colors.magenta,
-    [' '] = colors.magenta,
-    v = colors.magenta,
-    R = colors.red,
+-- mode dictionary
+local modes = setmetatable(
+  {
+    n    ={text="NOR", color = colors.cyan}
+    i    ={text="INS", color = colors.green}
+    c    ={text="CMD", color = colors.orange}
+    v    ={text="VIS", color = colors.magenta}
+    V    ={text="L·V", color = colors.magenta}
+    [''] ={text="B·V", color = colors.magenta}
+    R    ={text="REP", color = colors.red}
+  },{
+    __index = function()
+      return "UNK"
+    end
   }
 
-  local color = mode_colors[vim.fn.mode()]
+)
 
-  if color == nil then
-    color = colors.red
-  end
+--seperator
+local sep = {
+  open = "",
+  close = "",
+}
 
-  return color
-end
-
--- see if file is in git repo
-local in_git_repo = function ()
-  local vcs = require('galaxyline.provider_vcs')
-  local branch_name = vcs.get_git_branch()
-
-  return branch_name ~= nil
-end
+--vim mode
+local function get_current_mode()
+  local cur_mode = vim.api.nvim_get_mode().mode
+  vim.cmd(string.format("hi StatusLineMode guibg=%s", modes[cur_mode].color))
+  vim.cmd(string.format("hi StatisLineSepMode_0 guifg=%s", modes[cur_mode].color))
+  return modes[cur_mode].text
+end  
 
 -- make sure buffer isnt empty
-local buffer_not_empty = function()
+local buffer_empty= function()
   if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then
-    return true
+    return false
   end
-  return false
+  return true 
 end
 
--- start seperator, test code to make sure it worked
-gls.left[1] = {
-  FirstElement = {
-    provider = function() return '▋' end,
-    highlight = { colors.cyan, colors.section_bg }
-  },
-}
+local function string_split(str, sep)
+  if sep == nil then sep = "%s" end
+  local t = {}
+  for sub in string.gmatch(str, "([^"..sep.."]+)") do
+    table.insert(t, sub)
+  end
+  return t
+end
 
-gls.left[2] ={
-  ViMode = {
-    provider = function()
-      local alias = {
-	n = 'NORMAL',
-	i = 'INSERT',
-	c = 'COMMAND',
-	V = 'VISUAL',
-	[' '] = 'VISUAL',
-	v = 'VISUAL',
-	R = 'REPLACE',
-	t = 'TERMINAL'
-      } 
 
-      api.nvim_command('hi GalaxyViMode guifg='..mode_color())
-      local alias_mode = alias[fn.mode()]
-      if alias_mode == nil then
-	alias_mode = fn.mode()
-      end
-      return alias_mode..' '
-    end,
-    highlight = { colors.bg, colors.fg },
-    separator = " ",
-    separator_highlight = {colors.bg, colors.section_bg},
-  }
-}
+local function yadm_extension_cleaner(ext)
+  return string_split(ext, "##")[0]
+end
 
-gls.mid[1] = {
-  FileIcon = {
-    provider = 'FileIcon',
-    condition = buffer_not_empty,
-    highlight = { require('galaxyline.provider_fileinfo').get_file_icon_color, colors.section_bg },
-  },
-}
-gls.mid[2] = {
-  FileName ={ 
-    provider = function ()
-      return vim.fn.expand('%f')
-    end,
-    condition = buffer_not_empty
-  }
-}
+-- file info
+local function get_file_info()
+  local file_path = vim.fn.expand('%:p:.')
+  local file_name = vim.fn.expand('%:t')
+  if buffer_empty then file_name = "[buffer]" end
+  local file_extension = vim.fn.expand("%:e")
+  if string.find(file_extension, "##") then file_extension = yadm_extension_cleaner(file_extension) end
+  local read_only_icon = vim.bo.filetype == 'help' and vim.bo.readonly == true and '  ' or ''
+  local modified_icon = ' '
+  if vim.bo.modifiable then
+    if vim.bo.modified then
+      modified_icon = ''
+      vim.cmd(string.format("hi StatusLineFileName guifg=%s", color.red))
+    else
+      vim.cmd(string.format("hi StatusLineFileName guifg=%s", color.yellow))
+    end
+  end
+  return string.format("%s %s %s", read_only_icon, file_path, modified_icon)
+end
 
+local function get_file_type()
+  local file_name = vim.fn.expand('%:t')
+  local file_extension = vim.fn.expand("%:e")
+  if string.find(file_extension, "##") then file_extension = yadm_extension_cleaner(file_extension) end
+
+  icon = require'nvim-web-devicons'.get_icon(file_name, file_extension)
+  icon = icon == nil and '' or icon
+  file_type = vim.bo.filetype
+  if file_type == '' then file_type = "no ft" end
+  return icon .. ' ' .. file_type
+end
+
+local function get_lsp_count()
+  if vim.tbl_isempty(vim.lsp.buf_get_clients(0)) then
+    return ''
+  end
+  local diag = ''
+  local error_count = vim.lsp.diagnostic.get_count(0, 'Error')
+  if error_count > 0 then
+    diag = diag .. string.format("%%#StatusLineLspError# %s ", error_count)
+  end
+
+  local warning_count = vim.lsp.diagnostic.get_count(0, 'Warning')
+  if warning_count > 0 then
+    diag = diag .. string.format("%%#StatusLineLspWarn# %s ", warning_count)
+  end
+
+  local info_count = vim.lsp.diagnostic.get_count(0, 'Information')
+  if info_count > 0 then
+    diag = diag .. string.format("%%#StatusLineLspInfo# %s ", info_count)
+  end
+
+  local hint_count = vim.lsp.diagnostic.get_count(0, 'Hint')
+  if hint_count > 0 then
+    diag = diag .. string.format("%%#StatusLineLspInfo#💡%s", hint_count)
+  end
+  return diag
+end
+
+local function get_ln_col()
+  local pos = vim.api.nvim_win_get_cursor(0)
+  return string.format("%3d :%2d ", pos[1], pos[2])
+end
+
+local function get_ln_percent()
+  local current_line = vim.api.nvim_win_get_cursor(0)[1]
+  local total_line = vim.api.nvim_buf_line_count(0)
+  if current_line == 1 then return 'Top' end
+  if current_line == total_line then return 'Bot' end
+  return string.format("%2d", math.floor(current_line/total_line*100))
+end
+
+_G.set_active = function()
+  local statusline = ''
+  -- double %% to get % in string
+  -- pattern is %#HightlightGroup#sometext
+  statusline = statusline .. string.format("%%#StatusLineSepMode_0#%s", sep.open)
+  statusline = statusline .. string.format("%%#StatusLineMode#%s ", get_current_mode())
+  statusline = statusline .. string.format("%%#StatusLineFileName#%s", get_file_info())
+  statusline = statusline .. string.format("%%#StatusLineSep1_Bg#%s", sep.close)
+  statusline = statusline .. "%#StatusLineBg#"
+  statusline = statusline .. string.format(" %s", get_lsp_count())
+
+  -- Right section
+  statusline = statusline .. "%="
+  statusline = statusline .. string.format("%%#StatusLineMode# %s  %s ", get_ln_col(), get_ln_percent())
+  statusline = statusline .. string.format("%%#StatusLineSepMode_0#%s", sep.close)
+  return statusline
+end
+
+_G.set_inactive = function()
+  local statusline = ''
+  statusline = statusline .. string.format("%%#StatusLineSepInactive#%s", sep.open)
+  statusline = statusline .. string.format("%%#StatusLineInactiveFileName#%s", get_file_info())
+  statusline = statusline .. "%#StatusLineBg#"
+
+  -- Right section
+  statusline = statusline .. "%="
+  statusline = statusline .. string.format("%%#StatusLineSepInactive#%s", sep.close)
+  vim.wo.statusline = statusline
+end
+
+vim.cmd [[
+  augroup Statusline
+	au!
+	au WinEnter,BufEnter * setlocal statusline=%!v:lua.set_active()
+	au WinLeave,BufLeave * lua set_inactive()
+	au WinEnter,BufEnter,FileType NvimTree,startify lua set_inactive()
+  augroup END
+]]

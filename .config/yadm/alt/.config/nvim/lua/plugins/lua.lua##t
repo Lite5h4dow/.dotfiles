@@ -54,14 +54,14 @@ return require('packer').startup(
     use {'antoinemadec/coc-fzf', branch = 'release'}
 
     -- gruvbox theme
-    use {'morhetz/gruvbox'}
+    -- use {'morhetz/gruvbox'}
 
     -- galaxyline setup
-    use {
-      'glepnir/galaxyline.nvim',
-      branch = 'main',
-      config = function()require'statusline.lua'end,
-      requires = {'kyazdani42/nvim-web-devicons', opt = true}
-    }
+    --use {
+    --  'glepnir/galaxyline.nvim',
+    --  branch = 'main',
+    --  config = function()require'statusline.lua'end,
+    --  requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    --}
   end
 )
