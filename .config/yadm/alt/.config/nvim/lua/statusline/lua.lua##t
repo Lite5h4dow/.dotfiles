@@ -83,7 +83,7 @@ local function get_file_info()
       modified_icon = ''
       vim.cmd(string.format("hi StatusLineFileName guifg=%s", color.red))
     else
-      vim.cmd(string.format("hi StatusLineFileName guifg=%s", color.yellow))
+      vim.cmd(string.format("hi StatusLineFileName guifg=%s", color.red))
     end
   end
   return string.format("%s %s %s", read_only_icon, file_path, modified_icon)
