@@ -26,6 +26,7 @@ require 'neovide.lua'
 require 'plugins.lua'
 require 'rebinds.lua'
 require 'limelight.lua'
+require 'statusline.lua'
 -- require 'fzf.lua'
 
 -- Set Gruvbox as colorscheme
