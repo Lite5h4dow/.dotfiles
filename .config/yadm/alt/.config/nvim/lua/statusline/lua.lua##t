@@ -18,12 +18,12 @@ local colors = {
 -- mode dictionary
 local modes = setmetatable(
   {
-    n    ={text="NOR", color = colors.cyan}
-    i    ={text="INS", color = colors.green}
-    c    ={text="CMD", color = colors.orange}
-    v    ={text="VIS", color = colors.magenta}
-    V    ={text="L·V", color = colors.magenta}
-    [''] ={text="B·V", color = colors.magenta}
+    n    ={text="NOR", color = colors.cyan},
+    i    ={text="INS", color = colors.green},
+    c    ={text="CMD", color = colors.orange},
+    v    ={text="VIS", color = colors.magenta},
+    V    ={text="L·V", color = colors.magenta},
+    [''] ={text="B·V", color = colors.magenta},
     R    ={text="REP", color = colors.red}
   },{
     __index = function()
