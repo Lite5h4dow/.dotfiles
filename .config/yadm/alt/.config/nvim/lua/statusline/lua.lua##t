@@ -1,9 +1,5 @@
-local gl = require('galaxyline')
-local gls = gl.section
-
 local fn = vim.fn
 local api = vim.api
--- my galaxyline config
 
 -- ripped colours, need to make my own config
 local colors = {
