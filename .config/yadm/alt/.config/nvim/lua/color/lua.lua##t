@@ -1,4 +1,4 @@
-local u = require('utils')
+local u = require('utils.lua')
 
 local function make_schema()
   local colors = {

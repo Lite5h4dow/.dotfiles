@@ -1,30 +1,18 @@
 local fn = vim.fn
 local api = vim.api
 
--- ripped colours, need to make my own config
-local colors = {
-  bg = '#282a36',
-  fg = '#f8f8f2',
-  section_bg = '#38393f',
-  yellow = '#f1fa8c',
-  cyan = '#8be9fd',
-  green = '#50fa7b',
-  orange = '#ffb86c',
-  magenta = '#ff79c6',
-  blue = '#8be9fd',
-  red = '#ff5555'
-}
+local schema = require('color.lua').schema
 
 -- mode dictionary
 local modes = setmetatable(
   {
-    n    ={text="NOR", color = colors.cyan},
-    i    ={text="INS", color = colors.green},
-    c    ={text="CMD", color = colors.orange},
-    v    ={text="VIS", color = colors.magenta},
-    V    ={text="L·V", color = colors.magenta},
-    [''] ={text="B·V", color = colors.magenta},
-    R    ={text="REP", color = colors.red}
+    n    ={text="NOR", color = schema.purple},
+    i    ={text="INS", color = schema.teal},
+    c    ={text="CMD", color = schema.orange},
+    v    ={text="VIS", color = schema.blue},
+    V    ={text="L·V", color = schema.blue},
+    [''] ={text="B·V", color = schema.blue},
+    R    ={text="REP", color = schema.red}
   },{
     __index = function()
       return "UNK"
@@ -81,9 +69,9 @@ local function get_file_info()
   if vim.bo.modifiable then
     if vim.bo.modified then
       modified_icon = ''
-      vim.cmd(string.format("hi StatusLineFileName guifg=%s", color.red))
+      vim.cmd(string.format("hi StatusLineFileName guifg=%s", schema.red))
     else
-      vim.cmd(string.format("hi StatusLineFileName guifg=%s", color.red))
+      vim.cmd(string.format("hi StatusLineFileName guifg=%s", schema.gray10))
     end
   end
   return string.format("%s %s %s", read_only_icon, file_path, modified_icon)
