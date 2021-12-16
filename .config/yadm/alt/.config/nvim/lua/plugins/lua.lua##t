@@ -54,7 +54,7 @@ return require('packer').startup(
     use {'antoinemadec/coc-fzf', branch = 'release'}
 
     -- gruvbox theme
-    -- use {'morhetz/gruvbox'}
+    use {'morhetz/gruvbox'}
 
     -- galaxyline setup
     --use {
