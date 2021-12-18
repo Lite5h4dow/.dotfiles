@@ -50,6 +50,9 @@ return require('packer').startup(
     -- autoclose
     use {'townk/vim-autoclose'}
 
+    -- autoclose html
+    use {'alvan/vim-closetag'}
+
     -- coc
     use {'neoclide/coc.nvim', branch = 'release'}
 
@@ -58,6 +61,9 @@ return require('packer').startup(
 
     -- gruvbox theme
     use {'morhetz/gruvbox'}
+
+    -- suda
+    use {'lambdalisue/suda.vim'}
 
     -- galaxyline setup
     --use {
