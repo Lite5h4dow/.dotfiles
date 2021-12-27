@@ -6,7 +6,7 @@ local g = vim.g
 o.number = true
 
 -- Set font to "FiraCode NerdFonts Monospaced"
-o.guifont = "FiraCode Nerd Font:h10"
+o.guifont = "FiraCode Nerd Font:h8"
 
 -- Enable AutoSaving
 g.auto_save = true
