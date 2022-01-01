@@ -30,4 +30,4 @@ require 'statusline.lua'
 -- require 'fzf.lua'
 
 -- Set Gruvbox as colorscheme
-vim.cmd('colorscheme gruvbox')
+vim.cmd('colorscheme nord')

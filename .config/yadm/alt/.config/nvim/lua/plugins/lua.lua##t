@@ -60,7 +60,10 @@ return require('packer').startup(
     use {'antoinemadec/coc-fzf', branch = 'release'}
 
     -- gruvbox theme
-    use {'morhetz/gruvbox'}
+    -- use {'morhetz/gruvbox'}
+
+    -- nord theme
+    use {'arcticicestudio/nord-vim'}
 
     -- suda
     use {'lambdalisue/suda.vim'}

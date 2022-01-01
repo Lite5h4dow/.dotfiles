@@ -6,13 +6,13 @@ local schema = require('color.lua').schema
 -- mode dictionary
 local modes = setmetatable(
   {
-    n    ={text="NOR", color = schema.purple},
-    i    ={text="INS", color = schema.teal},
-    c    ={text="CMD", color = schema.orange},
-    v    ={text="VIS", color = schema.blue},
-    V    ={text="L·V", color = schema.blue},
-    [''] ={text="B·V", color = schema.blue},
-    R    ={text="REP", color = schema.red}
+    n    ={text=" NOR", color = schema.purple},
+    i    ={text=" INS", color = schema.teal},
+    c    ={text=" CMD", color = schema.orange},
+    v    ={text=" VIS", color = schema.blue},
+    V    ={text=" L·V", color = schema.blue},
+    [''] ={text=" B·V", color = schema.blue},
+    R    ={text=" REP", color = schema.red}
   },{
     __index = function()
       return "UNK"
@@ -133,7 +133,9 @@ _G.set_active = function()
   -- pattern is %#HightlightGroup#sometext
   statusline = statusline .. string.format("%%#StatusLineSepMode_0#%s", sep.open)
   statusline = statusline .. string.format("%%#StatusLineMode#%s ", get_current_mode())
-  statusline = statusline .. string.format("%%#StatusLineFileName#%s", get_file_info())
+  if not buffer_empty() then
+    statusline = statusline .. string.format("%%#StatusLineFileName#%s", get_file_info())
+  end
   statusline = statusline .. string.format("%%#StatusLineSep1_Bg#%s", sep.close)
   statusline = statusline .. "%#StatusLineBg#"
   statusline = statusline .. string.format(" %s", get_lsp_count())
