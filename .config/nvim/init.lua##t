@@ -25,12 +25,12 @@ o.splitright = true
 o.autoread = true
 
 -- extended configs
-require 'neovide.lua'
-require 'plugins.lua'
-require 'rebinds.lua'
-require 'limelight.lua'
-require 'statusline.lua'
--- require 'fzf.lua'
+require 'neovide'
+require 'plugins'
+require 'rebinds'
+require 'limelight'
+require 'statusline'
+-- require 'fzf'
 
 -- Set Gruvbox as colorscheme
 vim.cmd('colorscheme nord')
