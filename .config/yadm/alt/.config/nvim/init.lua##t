@@ -5,6 +5,9 @@ local g = vim.g
 -- Enable Line numbers
 o.number = true
 
+-- set encoding to utf8
+o.encoding = "utf8"
+
 -- Set font to "FiraCode NerdFonts Monospaced"
 o.guifont = "FiraCode Nerd Font:h8"
 
@@ -31,3 +34,7 @@ require 'statusline.lua'
 
 -- Set Gruvbox as colorscheme
 vim.cmd('colorscheme nord')
+
+require"nvim-web-devicons".setup{
+  default = true;
+}

@@ -1,7 +1,7 @@
 local fn = vim.fn
 local api = vim.api
 
-local schema = require('color.lua').schema
+local schema = require('color').schema
 
 -- mode dictionary
 local modes = setmetatable(
@@ -54,7 +54,22 @@ end
 
 
 local function yadm_extension_cleaner(ext)
-  return string_split(ext, "##")[0]
+  return string_split(ext, "##")[1]
+end
+
+local function get_file_icon(filename, extension)
+  file_icon = ""
+  ext = extension
+    if string.find(ext, "##") then
+      ext = yadm_extension_cleaner(extension)
+    end
+  file_icon = require'nvim-web-devicons'.get_icon(filename, ext)
+  return file_icon
+end
+
+local function print_fix(thing)
+  if type(thing) ~= "string" then return "" end
+  if thing ~= "" then return thing .. " " else return "" end
 end
 
 -- file info
@@ -64,8 +79,9 @@ local function get_file_info()
   if buffer_empty then file_name = "[buffer]" end
   local file_extension = vim.fn.expand("%:e")
   if string.find(file_extension, "##") then file_extension = yadm_extension_cleaner(file_extension) end
-  local read_only_icon = vim.bo.filetype == 'help' and vim.bo.readonly == true and '  ' or ''
-  local modified_icon = ' '
+  local read_only_icon = "" 
+  if vim.bo.filetype == 'help' or vim.bo.readonly == true then read_only_icon = '' end
+  local modified_icon = ''
   if vim.bo.modifiable then
     if vim.bo.modified then
       modified_icon = ''
@@ -74,17 +90,10 @@ local function get_file_info()
       vim.cmd(string.format("hi StatusLineFileName guifg=%s", schema.gray10))
     end
   end
-  return string.format("%s %s %s", read_only_icon, file_path, modified_icon)
-end
 
-local function get_file_type()
-  local file_name = vim.fn.expand('%:t')
-  local file_extension = vim.fn.expand("%:e")
-  icon = require'nvim-web-devicons'.get_icon(file_name, file_extension)
-  icon = icon == nil and '' or icon
-  file_type = vim.bo.filetype
-  if file_type == '' then file_type = "no ft" end
-  return icon .. ' ' .. file_type
+  file_icon = get_file_icon(file_name, file_extension)
+
+  return string.format(" %s%s%s%s", print_fix(file_icon), print_fix(file_path), print_fix(read_only_icon), print_fix(modified_icon))
 end
 
 local function get_lsp_count()
@@ -150,7 +159,9 @@ end
 _G.set_inactive = function()
   local statusline = ''
   statusline = statusline .. string.format("%%#StatusLineSepInactive#%s", sep.open)
-  statusline = statusline .. string.format("%%#StatusLineInactiveFileName#%s", get_file_info())
+  if not buffer_empty() then
+    statusline = statusline .. string.format("%%#StatusLineInactiveFileName#%s", get_file_info())
+  end
   statusline = statusline .. "%#StatusLineBg#"
 
   -- Right section
