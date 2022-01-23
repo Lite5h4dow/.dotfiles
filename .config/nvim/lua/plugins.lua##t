@@ -68,6 +68,9 @@ return require('packer').startup(
     -- suda
     use {'lambdalisue/suda.vim'}
 
+    -- dockerfile
+    use {'ekalinin/Dockerfile.vim'}
+
     -- galaxyline setup
     --use {
     --  'glepnir/galaxyline.nvim',
