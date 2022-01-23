@@ -1,0 +1,70 @@
+*{
+  font: "FiraCode Nerd Font 12";
+  background-color: #2E3440;
+  transparent-background: #2E3440AA;
+  foreground-color-main: #ECEFF4;
+  foreground-color-alt: #4C566A;
+}
+
+window{
+  padding: 25%;
+  fullscreen: true;
+  background-color: #2E3440AA;
+}
+
+mainbox{
+  border: 10px;
+  border-color: #2E3440;
+  border-radius: 10px;
+  background-color: #2E3440;
+  color: #4C566A;
+}
+
+scrollbar{
+  padding: 2px;
+  handle-color: #4C566A;
+}
+
+inputbar{
+  background-color: #2E3440;
+  color: #4C566A;
+}
+
+prompt{
+  text-color: #4C566A;
+}
+
+entry{
+  text-color: #ECEFF4;
+}
+
+listview{
+  background-color: #2E3440;
+  text-color: #ECEFF4;
+  padding: 5;
+  layout: vertical;
+}
+
+element{
+  padding: 1px;
+  spacing: 5px;
+  text-color: #ECEFF4;
+  background-color: #2E3440;
+  color: #2E3440;
+}
+
+element-text{
+  text-color: #ECEFF4;
+}
+
+element normal.normal {
+  background-color: #2E3440;
+}
+
+element alternate.normal {
+  background-color: #2E3440;
+}
+
+element selected{
+  background-color: #4C566A;
+}
