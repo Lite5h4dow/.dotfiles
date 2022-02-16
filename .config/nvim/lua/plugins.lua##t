@@ -12,7 +12,7 @@ local packer_exists = pcall(vim.cmd, [[packeradd packer.nvim]])
 
 g.closetag_filenames = '*.html, *.xml, *.jsx, *.tsx, *.xhtml'
 
-g.closetag_xhtml_filetypes ='*.tsx, *.jsx, *.xhtml'
+g.closetag_xhtml_filetypes ='tsx,jsx,xhtml'
 
 g.closetag_regions = {
   ['typescript.tsx']= 'jsxRegion,tsxRegion',
