@@ -82,6 +82,9 @@ return require('packer').startup(
     -- dockerfile
     use {'ekalinin/Dockerfile.vim'}
 
+    -- emmet
+    use {'mattn/emmet-vim'}
+
     -- galaxyline setup
     --use {
     --  'glepnir/galaxyline.nvim',
