@@ -10,6 +10,14 @@ end
 
 local packer_exists = pcall(vim.cmd, [[packeradd packer.nvim]])
 
+
+g.closetag_regions = {
+  ['typescript.tsx']= 'jsxRegion,tsxRegion',
+  ['javascript.jsx']= 'jsxRegion',
+  ['typescriptreact']= 'jsxRegion,tsxRegion',
+  ['javascriptreact']= 'jsxRegion',
+}
+
 g.coc_global_extensions ={ 
   "coc-deno",
   "coc-tsserver",

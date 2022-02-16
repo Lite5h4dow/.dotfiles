@@ -8,9 +8,9 @@ polybar example&
 
 feh --bg-scale /usr/share/wallpapers/uckgbxxfvdr21.png
 
-xinput set-prop 15 "libinput Tapping Enabled" 1
-xinput set-prop 15 "libinput Natural Scrolling Enabled" 1
-xinput set-prop 15 "libinput Middle Emulation Enabled" 1
+xinput set-prop "1A582000:00 06CB:CD73 Touchpad" "libinput Tapping Enabled" 1
+xinput set-prop "1A582000:00 06CB:CD73 Touchpad" "libinput Natural Scrolling Enabled" 1
+xinput set-prop "1A582000:00 06CB:CD73 Touchpad" "libinput Middle Emulation Enabled" 1
 
 bspc monitor -d I II III IV V VI VII VIII IX X
 
