@@ -6,7 +6,7 @@ picom&
 
 polybar example&
 
-feh --bg-scale /usr/share/wallpapers/uckgbxxfvdr21.png
+feh --bg-scale ~/.wallpapers/w9l0ul7y98l81.webp
 
 xinput set-prop "1A582000:00 06CB:CD73 Touchpad" "libinput Tapping Enabled" 1
 xinput set-prop "1A582000:00 06CB:CD73 Touchpad" "libinput Natural Scrolling Enabled" 1

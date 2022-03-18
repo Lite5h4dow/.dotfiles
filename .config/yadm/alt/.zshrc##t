@@ -43,6 +43,21 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 {% endif %}
 
+#-----Initialise rvm------
+{% if yadm.os == "WSL" %}
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+{% endif %}
+{% if yadm.os == "Linux" %}
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+{% endif %}
+{% if yadm.os == "Darwin" %}
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+{% endif %}
+
+
 #-----Add local bin-----
 export PATH=$HOME/.local/bin:$PATH
 
