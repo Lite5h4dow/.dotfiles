@@ -3,11 +3,11 @@
 
 {% if yadm.class == "work" %}
 [user]
-	email = ldaughma@yozu.co.uk
+	email = ${{secrets.WORK_EMAIL}}
 	name = Lamar Daughma
 {% else %}
 [user]
-	email = lite5h4dow@gmail.com
+	email = ${{secrets.PERSONAL_EMAIL}}
 	name = Lamar Daughma
 {% endif %}
 [pull]
