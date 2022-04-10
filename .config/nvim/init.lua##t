@@ -8,9 +8,6 @@ o.number = true
 -- set encoding to utf8
 o.encoding = "utf8"
 
--- Set font to "FiraCode NerdFonts Monospaced"
-o.guifont = "FiraCode Nerd Font:h8"
-
 -- Enable AutoSaving
 g.auto_save = true
 
