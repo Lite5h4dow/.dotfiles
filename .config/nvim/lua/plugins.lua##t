@@ -26,9 +26,7 @@ return require('packer').startup(
   function()
     use {'wbthomason/packer.nvim', opt=true}
 
-    --devicons
-    use {'kyazdani42/nvim-web-devicons'}
-
+    ----- junegunn section -----
     -- fzf
     use {'junegunn/fzf', dir='~/.fzf', run='./install --all'}
     use {'junegunn/fzf.vim'}
@@ -39,8 +37,12 @@ return require('packer').startup(
     -- easy align
     use {'junegunn/vim-easy-align'}
 
-    -- deoplete
-    -- use {'Shougo/deoplete.nvim', run=':UpdateRemotePlugins'}
+    -- vim slash
+    use {'junegunn/vim-slash'}
+
+    ----- everything else -----    
+    --devicons
+    use {'kyazdani42/nvim-web-devicons'}
 
     -- Auto comment
     use {'KarimElghamry/vim-auto-comment'}
