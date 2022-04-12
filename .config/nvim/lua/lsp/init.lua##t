@@ -1,6 +1,6 @@
 --lsp zero
 local lsp=require('lsp-zero')
-lsp.preset("reccomended")
+lsp.preset("recomended")
 lsp.nvim_workspace()
 lsp.setup()
 
