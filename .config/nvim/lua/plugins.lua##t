@@ -54,10 +54,18 @@ return require('packer').startup(
     use {'alvan/vim-closetag'}
 
     -- lspconfig
-    use {'neovim/nvim-lspconfig'}
-
-    -- lspinstaller
-    use {"williamboman/nvim-lsp-installer"}
+    use {
+      'neovim/nvim-lspconfig',
+      opt = true,
+      event = 'BufReadPre',
+      wants = {'nvim-lsp-installer'},
+      config = function()
+	require("lsp").setup()
+      end,
+      requires = {
+	"williamboman/nvim-lsp-installer",
+      }
+    }
 
     -- nord theme
     use {'arcticicestudio/nord-vim'}

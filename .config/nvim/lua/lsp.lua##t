@@ -1,0 +1,101 @@
+local M ={}
+local lsp_installer = require("nvim-lsp-installer")
+local keymap = vim.api.nvim_set_keymap
+local buf_keymap = vim.api.nvim_buf_set_keymap
+
+lsp_installer.settings({
+  install_root_dir = "~/.config/nvim/.lsp_servers"
+})
+
+local servers = {
+  bashls = {},
+  cssls= {},
+  denols= {},
+  dockerls= {},
+  emmet_ls= {},
+  grammarly= {},
+  html= {},
+  jsonls= {},
+  pyright= {},
+  rust_analyzer= {},
+  solargraph= {},
+  tailwindcss= {},
+  tsserver= {}
+}
+
+local function keybindings(client, bufnr)
+  local options = {noremap = true, silent= true}
+
+  --key mappings
+  buf_keymap(bufnr, "n", "<leader-h>", "<cmd>lua vim.lsp.buf.hover()<CR>", options)
+  keymap("n", "<leader-[>", "<cmd>lua vim.diagnostic.goto_prev()<CR>", options)
+  keymap("n", "<leader-]>", "<cmd>lua vim.diagnostic.goto_next()<CR>", options)
+  keymap("n", "<leader-S-[>", "<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR})<CR>", options)
+  keymap("n", "<leader-S-]>", "<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.ERROR})<CR>", options)
+
+  --whichkey
+  local keymap_l = {
+    l = {
+      name = "Code",
+      r = {"<cmd>lua vim.lsp.buf.rename()<CR>", "Rename"},
+      a = {"<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action"},
+      d = {"<cmd>lua vim.diagnostic.open_fload()<CR>", "Line Diagnostics"},
+      i = {"<cmd>LspInfo<CR>", "Lsp Info"},
+    },
+  }
+  if client.resolved_capabilities.document_formatting then
+    keymap_l.l.f = {"<cmd>lua vim.lsp.buf.formatting()<CR>", "Format Document"}
+  end
+
+  local keymap_g = {
+    name = "Goto",
+    d = { "<Cmd>lua vim.lsp.buf.definition()<CR>", "Definition" },
+    D = { "<Cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration" },
+    s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help" },
+    I = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Goto Implementation" },
+    t = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Goto Type Definition" },
+  }
+
+  whichkey.register(keymap_l, {buffer = bufnr, prefix = "<leader>" })
+  whichkey.register(keymap_g, {buffer = bufnr, prefix = "g" })
+
+end
+
+local function installer(servers, options)
+  for server_name, _ in pairs(servers) do
+    local server_available, server = lsp_installer_servers.get_server(server_name)
+
+    if server_available then
+      server:on_ready(function()
+	local opts = vim.tbl_deep_extend("force", options, servers[server_name] or {}) 
+	server:setup(opts)
+      end)
+
+      if not server:is_installed() then
+	utils.info("installing " .. server.name)
+	server:install()
+      end
+    else
+      utils.error(server)
+    end
+  end
+end
+
+local opts ={
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  }
+}
+
+local function on_attach(client, bufnr)
+  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+  vim.api.nvim_buf_set_option(0, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+  keymaps(client, bufnr)
+end
+
+function M.setup()
+  installer(servers, opts) 
+end
+
+return M
