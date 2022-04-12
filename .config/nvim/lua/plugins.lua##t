@@ -56,14 +56,7 @@ return require('packer').startup(
     -- lspconfig
     use {
       'neovim/nvim-lspconfig',
-      opt = true,
-      event = 'BufReadPre',
-      wants = {'nvim-lsp-installer'},
-      config = function()
-	require("lsp").setup()
-      end,
-      requires = {
-	"williamboman/nvim-lsp-installer",
+      "williamboman/nvim-lsp-installer",
       }
     }
 
