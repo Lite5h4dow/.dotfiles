@@ -22,13 +22,12 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-{% if yadm.os == "WSL" %}
+#{% if yadm.os == "WSL" %}
 #-----WSL Network Display---------
-export WSL_IP=$(cat /etc/resolv.conf | grep nameserver | cut -d' ' -f2)
-
-export PULSE_SERVER=tcp:$WSL_IP
-export DISPLAY=$WSL_IP:0.0
-{% endif %}
+#export WSL_IP=$(cat /etc/resolv.conf | grep nameserver | cut -d' ' -f2)
+#export PULSE_SERVER=tcp:$WSL_IP
+#export DISPLAY=$WSL_IP:0.0
+#{% endif %}
 
 #-----Initialise Node Version Manager -----
 {% if yadm.os == "WSL" %}
@@ -57,6 +56,10 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$PATH:$HOME/.rvm/bin"
 {% endif %}
 source ~/.rvm/scripts/rvm
+
+{% if yadm.os == "WSL" %}
+alias neovide="neovide.exe --wsl"
+{% endif %}
 
 #-----Add local bin-----
 export PATH=$HOME/.local/bin:$PATH
