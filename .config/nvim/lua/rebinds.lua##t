@@ -64,5 +64,5 @@ map('n', '<Leader>h', ':call CocActionAsync("doHover")<cr>', options)
 -- Copy, Cut and Paste
 map('v', '<C-c>', '\"=y', options)
 map('v', '<C-x>', '\"=x', options)
-map('i', '<C-p>', '<ESC>\"=p<a>', options)
-map('n', '<C-p>', '\"=p', options)
+map('i', '<C-v>', '<ESC>\"=p<a>', options)
+map('n', '<C-v>', '\"=p', options)
