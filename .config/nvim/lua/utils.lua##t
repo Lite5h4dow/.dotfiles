@@ -39,9 +39,36 @@ local function swap_win(arg)
   vim.cmd("buffer " .. cur_buf)
 end
 
+function t(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+function log(msg, hl, name)
+  name = name or "Neovim"
+  hl = hl or "Todo"
+  vim.api.nvim_echo({ { name .. ": ", hl }, { msg } }, true, {})
+end
+
+function warn(msg, name)
+  vim.notify(msg, vim.log.levels.WARN, { title = name })
+end
+
+function error(msg, name)
+  vim.notify(msg, vim.log.levels.ERROR, { title = name })
+end
+
+function info(msg, name)
+  vim.notify(msg, vim.log.levels.INFO, { title = name })
+end
+
 return {
 	hex_to_rgb = hex_to_rgb,
 	rgba_to_rgb = rgba_to_rgb,
 	highlight = highlight,
-  swap_win = swap_win
+	swap_win = swap_win,
+	t=t,
+	log=log,
+	warn=warn,
+	error=error,
+	info=info
 }
