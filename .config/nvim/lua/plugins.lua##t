@@ -21,19 +21,6 @@ g.closetag_regions = {
   ['javascriptreact']= 'jsxRegion',
 }
 
-g.coc_global_extensions ={ 
-  "coc-deno",
-  "coc-tsserver",
-  "coc-css",
-  "coc-sh",
-  "coc-html",
-  "coc-json",
-  "coc-rust-analyzer",
-  "coc-cmake",
-  "coc-git",
-  "coc-pyright"
-}
-
 -- Packer setup
 return require('packer').startup(
   function()
@@ -64,14 +51,11 @@ return require('packer').startup(
     -- autoclose html
     use {'alvan/vim-closetag'}
 
-    -- coc
-    use {'neoclide/coc.nvim', branch = 'release'}
+    -- lspconfig
+    use {'neovim/nvim-lspconfig'}
 
-    -- cocfzf
-    use {'antoinemadec/coc-fzf', branch = 'release'}
-
-    -- gruvbox theme
-    -- use {'morhetz/gruvbox'}
+    -- lspinstaller
+    use {"williamboman/nvim-lsp-installer"}
 
     -- nord theme
     use {'arcticicestudio/nord-vim'}
@@ -84,13 +68,5 @@ return require('packer').startup(
 
     -- emmet
     use {'mattn/emmet-vim'}
-
-    -- galaxyline setup
-    --use {
-    --  'glepnir/galaxyline.nvim',
-    --  branch = 'main',
-    --  config = function()require'statusline'end,
-    --  requires = {'kyazdani42/nvim-web-devicons', opt = true}
-    --}
   end
 )
