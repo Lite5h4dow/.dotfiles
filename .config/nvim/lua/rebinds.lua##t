@@ -62,7 +62,7 @@ map('v', '<C-S-/>', ':AutoBlockComment<CR>', options) -- autocomment block in vi
 map('n', '<Leader>h', ':call CocActionAsync("doHover")<cr>', options)
 
 -- Copy, Cut and Paste
-map('v', '<C-c>', '\"=y', options)
-map('v', '<C-x>', '\"=x', options)
-map('i', '<C-v>', '<ESC>\"=p<a>', options)
-map('n', '<C-v>', '\"=p', options)
+map('v', '<C-c>', '"=y', options)
+map('v', '<C-x>', '"=x', options)
+map('i', '<C-v>', '<ESC>"=p<a>', options)
+map('n', '<C-v>', '"=p', options)
