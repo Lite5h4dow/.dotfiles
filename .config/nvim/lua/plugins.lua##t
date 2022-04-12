@@ -56,8 +56,7 @@ return require('packer').startup(
     -- lspconfig
     use {
       'neovim/nvim-lspconfig',
-      "williamboman/nvim-lsp-installer",
-      }
+      'williamboman/nvim-lsp-installer',
     }
 
     -- nord theme
