@@ -7,7 +7,7 @@ o.clipboard = "unnamedplus"
 
 -- Set font to "FiraCode NerdFonts"
 {% if yadm.os == "WSL" %}
-o.guifont = "FiraCode NF Retina:h8"
+o.guifont = "FiraCode NF Retina:h10"
 {% else %}
 o.guifont = "FiraCode Nerd Font:h8"
 {% endif %}
