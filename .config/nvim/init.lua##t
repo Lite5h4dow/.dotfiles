@@ -27,6 +27,7 @@ require 'plugins'
 require 'rebinds'
 require 'limelight'
 require 'statusline'
+require 'lsp'
 -- require 'fzf'
 
 -- Set nord as colorscheme
