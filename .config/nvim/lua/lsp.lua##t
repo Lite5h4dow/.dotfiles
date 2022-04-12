@@ -6,7 +6,7 @@ local keymap = vim.api.nvim_set_keymap
 local buf_keymap = vim.api.nvim_buf_set_keymap
 
 lsp_installer.settings({
-  install_root_dir = "~/.config/nvim/.lsp_servers"
+  install_root_dir = ".lsp_servers"
 })
 
 local servers = {
