@@ -36,5 +36,5 @@ vim.cmd('colorscheme nord')
 require"nvim-web-devicons".setup{
   default = true;
 }
---local nVer = fn.system("source /usr/share/nvm/init-nvm.sh &> /dev/null && echo $(dirname $(nvm which node))")
---g.node_host_prog = nVer
+
+

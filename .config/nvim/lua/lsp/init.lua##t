@@ -1,7 +1,22 @@
-local status_ok, _ = pcall(require, "lspconfig")
-if not status_ok then
-	return
-end
+--lsp zero
+local lsp=require('lsp-zero')
+lsp.preset("reccomended")
+lsp.nvim_workspace()
+lsp.setup()
 
-require("lsp.lsp-installer")
-require("lsp.handlers").setup()
+-- lsp install
+local lsp_installer = require("nvim-lsp-installer")
+
+lsp_installer.settings({
+  install_root_dir = path.concat{vim.fn.stdpath "data", ".lsp_servers"}
+})
+
+lsp_installer.on_server_ready(function(server)
+  local opts={}
+  
+  local opts, server_opts = pcall(require, "lsp.settings.".. server.name)
+  if settings_exist then
+    opts = vim.tbl_deep_extend("force", server_opts, opts)
+  end
+end
+)
