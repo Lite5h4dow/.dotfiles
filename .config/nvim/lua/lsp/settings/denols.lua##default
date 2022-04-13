@@ -75,7 +75,7 @@ return{
       'typescriptreact',
       'typescript.tsx',
     },
-    root_dir = util.root_pattern('deno.json'),
+    root_dir = function() util.root_pattern('deno.json') end,
     init_options = {
       enable = true,
       lint = true,
