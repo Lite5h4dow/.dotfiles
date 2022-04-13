@@ -14,8 +14,9 @@ lsp_installer.settings({
 lsp_installer.on_server_ready(function(server)
   local opts={}
   
-  local opts, server_opts = pcall(require, "lsp.settings.".. server.name)
-  if settings_exist then
+  local opts_exist, server_opts = pcall(require, "lsp.settings.".. server.name)
+  print(vim.inspect(opts_exist)) 
+  if opts_exist then
     opts = vim.tbl_deep_extend("force", server_opts, opts)
   end
 end
