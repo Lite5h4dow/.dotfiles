@@ -1,0 +1,98 @@
+local util = require 'lspconfig.util'
+local lsp = vim.lsp
+local api = vim.api
+
+local function buf_cache(bufnr)
+  local params = {}
+  params['referrer'] = { uri = vim.uri_from_buffnr(bufnr) }
+  params['uris'] = {}
+
+  lsp.buf_request(bufnr, "deno/cache", params, function(err)
+    if err then
+      error(tostring(err))
+    end
+  end)
+end
+
+local function virtual_text_document_handler(uri, result)
+  if not result then
+    return nil
+  end
+
+  for client_id, res in pairs(result) do
+    local lines = vim.split(res.result, '\n')
+    local bufnr = vim.uri_to_bufnr(uri)
+
+    local current_buf = api.nvim_buf_get_lines(bufnr, 0, -1, false)
+    if #current_buf ~= 0 then
+      return nil
+    end
+
+    api.nvim_buf_set_lines(bufnr, 0,-1,nil,lines)
+    api.nvim_buf_set_options(bufnr, 'readonly', true)
+    api.nvim_buf_set_options(bufnr, 'modified', false)
+    api.nvim_buf_set_options(bufnr, 'modifiable', false)
+    lsp.buf_attach_client(bufnr, client_id)
+  end
+end
+
+local function virtual_text_document(uri)
+  local params ={
+    textDocument={
+      uri = uri
+    }
+  }
+
+  local result = lsp.buf_request_sync(0, "deno/virtualTextDocument", params)
+  virtual_text_document_handler(uri, result)
+end
+
+local function denols_handler(err, result, ctx)
+  if not result or vim.tbl_isempty(result) then
+    return nil
+  end
+
+  for _, res in pairs(result) do
+    local uri = res.uri or res.targetUri
+    if uri:match '^deno:' then
+      virtual_text_document(uri)
+      res['uri'] = uri
+      res['targetUri'] = uri
+    end
+  end
+
+  lsp.handlers[ctx.method](err, result, ctx)
+end
+
+return{
+  default_config = {
+    cmd = {'deno', 'lsp'},
+    filetypes = {
+      'javascript',
+      'javascriptreact',
+      'javascript.jsx',
+      'typescript',
+      'typescriptreact',
+      'typescript.tsx',
+    },
+    root_dir = util.root_pattern('deno.json', 'deno.jsonc', 'import_map.json'),
+    init_options = {
+      enable = true,
+      lint = true,
+      unstable = true,
+      import_map = './import_map.json'
+    },
+    handlers={
+      ['textDocument/definition'] = denols_handler,
+      ['textDocument/references'] = denols_handler
+    },
+  },
+  commands = {
+    DenolsCache = {
+      function()
+	buf_cache(0)
+      end,
+      description = 'Cache a module and all of its dependencies.'
+    }
+  }
+}
