@@ -1,34 +1,22 @@
 --lsp zero
 local lsp=require('lsp-zero')
-lsp.preset("manual-setup")
-lsp.set_preferences({
-  suggest_lsp_servers = true,
-  sign_icons = {
-    error = '✘',
-    warn = '▲',
-    hint = '⚑',
-    info = ''
-  }
-})
-lsp.nvim_workspace()
-lsp.setup()
-lsp.configure("tsserver", require("lsp.settings.tsserver"))
-lsp.configure("denols", require("lsp.settings.denols"))
-lsp.configure("bashls", require("lsp.settings.bashls"))
-lsp.configure("cssls", require("lsp.settings.cssls"))
-lsp.configure("dockerls", require("lsp.settings.dockerls"))
-lsp.configure("grammarly", require("lsp.settings.grammarly"))
-lsp.configure("html", require("lsp.settings.html"))
-lsp.configure("jsonls", require("lsp.settings.jsonls"))
-lsp.configure("pyright", require("lsp.settings.pyright"))
-lsp.configure("rust_analyzer", require("lsp.settings.rust_analyzer"))
-lsp.configure("solargraph", require("lsp.settings.solargraph"))
-lsp.configure("sumneko_lua", require("lsp.settings.sumneko_lua"))
-lsp.configure("tailwindcss", require("lsp.settings.tailwindcss"))
+lsp.preset('recommended')
 
 -- lsp install
 local lsp_installer = require("nvim-lsp-installer")
 
+local get_servers = lsp_installer.get_installed_servers
+
+for _,server in pairs(get_servers()) do
+  local config_exists, config = pcall(require, ("lsp.settings." .. server.name))
+
+  if config_exists then
+    config.configure(server.name)
+  end
+end
+
 lsp_installer.settings({
   install_root_dir = string.gsub((vim.fn.system("echo $HOME") .. "/.config/nvim/.lsp_servers"), "\n", "")
 })
+
+lsp.setup()
