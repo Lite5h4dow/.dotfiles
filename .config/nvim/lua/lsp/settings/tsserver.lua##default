@@ -1,5 +1,5 @@
 local util = require 'lspconfig.util'
-local lsp = require("lsp-zero")
+local lsp = require 'lsp-zero'
 
 local config = {
   default_config:{
@@ -12,9 +12,6 @@ local config = {
   }
 }
 
-return {
-  configure = function(name)
-    lsp.configure(name, config)
-  end
-}
-
+return function(name)
+  lsp.configure(name, config)
+end
