@@ -1,4 +1,4 @@
-local util = require "lspconfig.util"
+local lsp = require "lspconfig"
 local bin_name = 'typescript-language-server'
 local cmd = { bin_name, '--stdio' }
 
@@ -16,6 +16,6 @@ return{
       "typescriptreact",
       "typescript.tsx",
     },
-    root_dir = function () util.root_pattern("package.json") end
+    root_dir = lsp.util.root_pattern("package.json")
   }
 }
