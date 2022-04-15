@@ -2,14 +2,10 @@ local util = require 'lspconfig.util'
 local lsp = require 'lsp-zero'
 
 local config ={
-  default_config = {
-    root_dir = function()
-      return nvim_lsp.util.root_pattern("deno.json")
-    end,
+    root_dir = util.root_pattern("deno.json"),
     init_options = {
       lint = true,
     },
-  }
 }
 
 return function(name)

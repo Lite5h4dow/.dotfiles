@@ -1,15 +1,10 @@
-local util = require 'lspconfig.util'
 local lsp = require 'lsp-zero'
 
 local config = {
-  default_config:{
-    root_dir = function()
-      util.root_pattern("package.json")
-    end,
+    root_dir = require('lspconfig').util.root_pattern("package.json"),
     init_options = {
       lint = true,
     },
-  }
 }
 
 return function(name)
