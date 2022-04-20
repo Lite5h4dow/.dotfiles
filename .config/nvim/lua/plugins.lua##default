@@ -50,6 +50,9 @@ return require('packer').startup(
     -- autoclose
     use {'townk/vim-autoclose'}
 
+    --rspec runner
+    use {'thoughtbot/vim-rspec'}
+
     -- autoclose html
     use {'alvan/vim-closetag'}
 

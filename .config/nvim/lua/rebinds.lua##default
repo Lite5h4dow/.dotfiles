@@ -44,10 +44,10 @@ map('t', '<A-k>', '<C-\\><C-n><C-w><C-k>', options) -- escape to the up
 map('t', '<A-l>', '<C-\\><C-n><C-w><C-l>', options) -- escape to the right
 
 -- wayland clipboard interactions
-map('n', '<C-S-v>', ':r!wl-paste<CR>', options) -- paste from clipboard
+-- map('n', '<C-S-v>', ':r!wl-paste<CR>', options) -- paste from clipboard
 
-map('v', '<C-S-c>', 'y<ESC>:!wl-copy <C-r><CR>', options) -- paste to clipboard
-map('v', '<C-S-v>', '<ESC>:r!wl-paste<CR>', options) -- paste from clipboard
+-- map('v', '<C-S-c>', 'y<ESC>:!wl-copy <C-r><CR>', options) -- paste to clipboard
+-- map('v', '<C-S-v>', '<ESC>:r!wl-paste<CR>', options) -- paste from clipboard
 
 -- Auto Comment
 map('i', '<C-/>', ':AutoInlineComment<CR>', options) -- autocomment line in insert mode
@@ -59,7 +59,13 @@ map('n', '<C-S-/>', ':AutoBlockComment<CR>', options) -- autocomment block in no
 map('v', '<C-S-/>', ':AutoBlockComment<CR>', options) -- autocomment block in visual mode
 
 -- Coc Rebinds
-map('n', '<Leader>h', ':call CocActionAsync("doHover")<cr>', options)
+-- map('n', '<Leader>h', ':call CocActionAsync("doHover")<cr>', options)
+
+-- Rspec runner
+map("n", "<Leader>t", ':call RunCurrentSpecFile()<cr>', options)
+map("n", "<Leader>s", ':call RunNearestSpec()<cr>', options)
+map("n", "<Leader>l", ':call RunLastSpec()<cr>', options)
+map("n", "<Leader>a", ':call RunAllSpecs()<cr>', options)
 
 -- Copy, Cut and Paste
 map('v', '<C-c>', '"*y', options)
