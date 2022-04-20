@@ -9,7 +9,7 @@ vim.g.mapleader = ' ' -- global leader is space
 options = {noremap = true}
 
 -- find file by name (fzf)
-map('n', '<C-p>', ':Files<cr>', options)
+map('n', '<C-p>', ':GFiles<cr>', options)
 
 -- toggle limelight
 map('n', '<Leader><Esc>', ':Limelight!!<cr>', options)
