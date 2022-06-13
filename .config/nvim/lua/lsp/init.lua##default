@@ -7,16 +7,16 @@ local lsp_installer = require("nvim-lsp-installer")
 
 local get_servers = lsp_installer.get_installed_servers
 
-for _,server in pairs(get_servers()) do
-  local config_exists, configure = pcall(require, ("lsp.settings." .. server.name))
+ for _,server in pairs(get_servers()) do
+   local config_exists, configure = pcall(require, ("lsp.settings." .. server.name))
+ 
+   if config_exists then
+     configure(server.name)
+   end
+ end
 
-  if config_exists then
-    configure(server.name)
-  end
-end
-
-lsp_installer.settings({
-  install_root_dir = string.gsub((vim.fn.system("echo $HOME") .. "/.config/nvim/.lsp_servers"), "\n", "")
-})
+-- lsp_installer.settings({
+--  install_root_dir = string.gsub((vim.fn.system("echo $HOME") .. "/.config/nvim/.lsp_servers"), "\n", "")
+-- })
 
 lsp.setup()
