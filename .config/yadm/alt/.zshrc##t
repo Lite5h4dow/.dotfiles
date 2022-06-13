@@ -57,9 +57,9 @@ export PATH="$PATH:$HOME/.rvm/bin"
 {% endif %}
 source ~/.rvm/scripts/rvm
 
-{% if yadm.os == "WSL" %}
-alias neovide="neovide.exe --wsl"
-{% endif %}
+# {% if yadm.os == "WSL" %}
+# alias neovide="neovide.exe --wsl"
+# {% endif %}
 
 #-----Add local bin-----
 export PATH=$HOME/.local/bin:$PATH
