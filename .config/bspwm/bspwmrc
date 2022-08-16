@@ -4,6 +4,8 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 
 picom&
 
+dunst&
+
 killall -q polybar
 polybar example&
 

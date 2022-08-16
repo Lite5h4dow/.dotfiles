@@ -16,8 +16,11 @@ super + Escape
 
 #emoji menu
 super + semicolon
-	rofimoji
+	rofi -modi emoji -show emoji
 
+#power menu
+XF86PowerOff
+	rofi -modi p:rofi-power-menu -show p
 #
 # bspwm hotkeys
 #
