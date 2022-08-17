@@ -55,6 +55,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 {% endif %}
+
 source ~/.rvm/scripts/rvm
 
 # {% if yadm.os == "WSL" %}
@@ -73,6 +74,11 @@ alias ls="exa --icons"
 #-----zsh-autosuggestions-----
 source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_STRATEGY=(completion)
+
+#-----zsh-history-file-----
+export HISTFILE="~/.zsh_history"
+export HISTSIZE=10000
+export SAVEHIST=10000
 
 #-----zsh-autocomplete-----
 # zstyle ':autocomplete:*' list-lines 5

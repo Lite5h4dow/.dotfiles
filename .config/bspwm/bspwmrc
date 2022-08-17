@@ -7,7 +7,10 @@ picom&
 dunst&
 
 killall -q polybar
-polybar example&
+
+  for m in $(polybar --list-monitors | cut -d":" -f1); do
+    MONITOR=$m polybar example&
+  done
 
 feh --bg-scale ~/.wallpapers/w9l0ul7y98l81.webp
 

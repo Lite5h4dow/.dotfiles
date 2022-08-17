@@ -28,6 +28,7 @@ secondary = #e60053
 alert = #EBCB8B
 
 [bar/example]
+monitor=${env:MONITOR:}
 wm-restack = bspwm
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
