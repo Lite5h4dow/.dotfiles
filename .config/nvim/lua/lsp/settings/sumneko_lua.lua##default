@@ -51,11 +51,9 @@ require'lspconfig'.sumneko_lua.setup {
   },
 }
 
-return {
-  configure=function(name)
-    print("im configuring!")
-    lsp.configure(name, config)
-  end
-}
+return function(name)
+  print("im configuring!")
+  lsp.configure(name, config)
+end
 
 

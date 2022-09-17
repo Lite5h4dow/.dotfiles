@@ -58,6 +58,12 @@ map('i', '<C-S-/>', ':AutoBlockComment<CR>', options) -- autocomment block in in
 map('n', '<C-S-/>', ':AutoBlockComment<CR>', options) -- autocomment block in normal mode
 map('v', '<C-S-/>', ':AutoBlockComment<CR>', options) -- autocomment block in visual mode
 
+-- neotree
+map('n', '<C-S-e>', ':Neotree', options) --open neotree in normal mode
+map('i', '<C-S-e>', ':Neotree', options) --open neotree in insert mode
+map('v', '<C-S-e>', ':Neotree', options) --open neotree in visual mode
+
+
 -- Coc Rebinds
 -- map('n', '<Leader>h', ':call CocActionAsync("doHover")<cr>', options)
 
