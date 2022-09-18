@@ -24,10 +24,10 @@ o.autoread = true
 -- extended configs
 require 'neovide'
 require 'plugins'
-require 'rebinds'
 require 'limelight'
 require 'statusline'
 require 'lsp'
+require 'rebinds'
 -- require 'fzf'
 
 -- Set nord as colorscheme
