@@ -4,6 +4,8 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 
 picom&
 
+mons -a -e right&
+
 dunst&
 
 killall -q polybar

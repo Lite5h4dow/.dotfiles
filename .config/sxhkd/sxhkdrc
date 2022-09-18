@@ -18,9 +18,13 @@ super + Escape
 super + semicolon
 	rofi -modi emoji -show emoji
 
+#bluetooth menu
+super + b
+	rofi-bluetooth
+
 #power menu
 XF86PowerOff
-	rofi -modi p:rofi-power-menu -show p
+	~/.config/rofi/powermenu
 #
 # bspwm hotkeys
 #
@@ -130,6 +134,10 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
+#
+#Media Controls
+#
+
 # volume controls
 {XF86AudioRaiseVolume,XF86AudioLowerVolume}
 	pactl set-sink-volume 0 {+5%,-5%}
@@ -137,5 +145,6 @@ super + {Left,Down,Up,Right}
 XF86AudioMute
 	pactl set-sink-mute 0 toggle
 
+#media controls
 {XF86AudioStop,XF86AudioPlay,XF86AudioPrev,XF86AudioNext}
 	playerctl {stop,play-pause,previous,next}

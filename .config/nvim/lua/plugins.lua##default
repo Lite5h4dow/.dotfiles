@@ -51,7 +51,10 @@ return require('packer').startup(
     use {'townk/vim-autoclose'}
 
     --rspec runner
-    use {'thoughtbot/vim-rspec'}
+    --use {'thoughtbot/vim-rspec'}
+
+    -- vim-test
+    use {'vim-test/vim-test'}
 
     -- autoclose html
     use {'alvan/vim-closetag'}
@@ -81,13 +84,13 @@ return require('packer').startup(
     use {
       "nvim-neo-tree/neo-tree.nvim",
 	branch = "v2.x",
-	requires = { 
+	requires = {
 	  "nvim-lua/plenary.nvim",
 	  "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
 	  "MunifTanjim/nui.nvim",
 	}
       }
-    
+
     -- nord theme
     use {'arcticicestudio/nord-vim'}
 

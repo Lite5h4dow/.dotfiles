@@ -6,7 +6,7 @@ local g = vim.g
 map('n', '<Space>', '', {})
 vim.g.mapleader = ' ' -- global leader is space
 
-options = {noremap = true}
+local options = {noremap = true}
 
 -- find file by name (fzf)
 map('n', '<C-p>', ':GFiles<cr>', options)
@@ -28,10 +28,10 @@ map('v', '<C-f>', 'y<ESC>:Ag <C-r>"<cr>', options )
 
 -- convenient insert mode enter rebinds
 map('i', '<C-CR>', '<ESC>o', options) -- insert line below while editing
-map('i', '<C-S-CR>', '<ESC>O', options) -- insert line above while editing
+map('i', '<CS-CR>', '<ESC>O', options) -- insert line above while editing
 
 map('n', '<C-CR>', 'o<ESC>', options) --insert line below in normal mode
-map('n', '<C-S-CR>', 'O<ESC>', options) --insert line below in normal mode
+map('n', '<CS-CR>', 'O<ESC>', options) --insert line below in normal mode
 
 -- open terminal
 map('n', '<Leader><CR>', ':split | resize 10 | term<CR>', options)
@@ -54,24 +54,25 @@ map('i', '<C-/>', ':AutoInlineComment<CR>', options) -- autocomment line in inse
 map('n', '<C-/>', ':AutoInlineComment<CR>', options) -- autocomment line in normal mode
 map('v', '<C-/>', ':AutoInlineComment<CR>', options) -- autocomment line in visual mode
 
-map('i', '<C-S-/>', ':AutoBlockComment<CR>', options) -- autocomment block in insert mode
-map('n', '<C-S-/>', ':AutoBlockComment<CR>', options) -- autocomment block in normal mode
-map('v', '<C-S-/>', ':AutoBlockComment<CR>', options) -- autocomment block in visual mode
+map('i', '<CS-/>', ':AutoBlockComment<CR>', options) -- autocomment block in insert mode
+map('n', '<CS-/>', ':AutoBlockComment<CR>', options) -- autocomment block in normal mode
+map('v', '<CS-/>', ':AutoBlockComment<CR>', options) -- autocomment block in visual mode
 
 -- neotree
-map('n', '<C-S-e>', ':Neotree', options) --open neotree in normal mode
-map('i', '<C-S-e>', ':Neotree', options) --open neotree in insert mode
-map('v', '<C-S-e>', ':Neotree', options) --open neotree in visual mode
+map('n', '<CS-e>', ':Neotree<cr>', options) --open neotree in normal mode
+map('i', '<CS-e>', ':Neotree<cr>', options) --open neotree in insert mode
+map('v', '<CS-e>', ':Neotree<cr>', options) --open neotree in visual mode
 
 
 -- Coc Rebinds
 -- map('n', '<Leader>h', ':call CocActionAsync("doHover")<cr>', options)
 
 -- Rspec runner
-map("n", "<Leader>t", ':call RunCurrentSpecFile()<cr>', options)
-map("n", "<Leader>s", ':call RunNearestSpec()<cr>', options)
-map("n", "<Leader>l", ':call RunLastSpec()<cr>', options)
-map("n", "<Leader>a", ':call RunAllSpecs()<cr>', options)
+map("n", "<Leader>t", ':TestNearest<cr>', options)
+map("n", "<Leader>T", ':TestFile<cr>', options)
+map("n", "<Leader>g", ':TestVisit<cr>', options)
+map("n", "<Leader>l", ':TestLast<cr>', options)
+map("n", "<Leader>a", ':TestSuite<cr>', options)
 
 -- Copy, Cut and Paste
 map('v', '<C-c>', '"*y', options)
