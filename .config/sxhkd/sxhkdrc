@@ -22,6 +22,9 @@ super + semicolon
 super + b
 	rofi-bluetooth
 
+super + p
+	bwmenu
+
 #power menu
 XF86PowerOff
 	~/.config/rofi/powermenu

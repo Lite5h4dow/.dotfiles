@@ -1,7 +1,9 @@
 local fn = vim.fn
 local api = vim.api
 
+
 local schema = require('color').schema
+local table_length = require('utils').table_length
 
 -- mode dictionary
 local modes = setmetatable(
@@ -101,22 +103,26 @@ local function get_lsp_count()
     return ''
   end
   local diag = ''
-  local error_count = vim.lsp.diagnostic.get_count(0, 'Error')
+  local error_diagnostic = vim.diagnostic.get(0, {severity= vim.diagnostic.severity.ERROR} )
+  local error_count = table_length(error_diagnostic)
   if error_count > 0 then
     diag = diag .. string.format("%%#StatusLineLspError# %s ", error_count)
   end
 
-  local warning_count = vim.lsp.diagnostic.get_count(0, 'Warning')
+  local warning_diagnostic = vim.diagnostic.get(0, {severity= vim.diagnostic.severity.WARN})
+  local warning_count = table_length(warning_diagnostic)
   if warning_count > 0 then
     diag = diag .. string.format("%%#StatusLineLspWarn# %s ", warning_count)
   end
 
-  local info_count = vim.lsp.diagnostic.get_count(0, 'Information')
+  local info_diagnostic = vim.diagnostic.get(0, {severity= vim.diagnostic.severity.INFO})
+  local info_count = table_length(info_diagnostic)
   if info_count > 0 then
     diag = diag .. string.format("%%#StatusLineLspInfo# %s ", info_count)
   end
 
-  local hint_count = vim.lsp.diagnostic.get_count(0, 'Hint')
+  local hint_diagnostic = vim.diagnostic.get(0, {severity= vim.diagnostic.severity.HINT})
+  local hint_count = table_length(hint_diagnostic)
   if hint_count > 0 then
     diag = diag .. string.format("%%#StatusLineLspInfo#💡%s", hint_count)
   end

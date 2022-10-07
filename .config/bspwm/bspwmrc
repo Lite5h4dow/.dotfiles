@@ -14,7 +14,7 @@ killall -q polybar
     MONITOR=$m polybar example&
   done
 
-feh --bg-scale ~/.wallpapers/w9l0ul7y98l81.webp
+feh --bg-fill --randomize ~/.wallpapers/*
 
 xinput set-prop "1A582000:00 06CB:CD73 Touchpad" "libinput Tapping Enabled" 1
 xinput set-prop "1A582000:00 06CB:CD73 Touchpad" "libinput Natural Scrolling Enabled" 1

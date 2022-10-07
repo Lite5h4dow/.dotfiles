@@ -61,6 +61,12 @@ function info(msg, name)
   vim.notify(msg, vim.log.levels.INFO, { title = name })
 end
 
+function table_length(table)
+  local count = 0
+  for _ in pairs(table) do count = count + 1 end
+  return count
+end
+
 return {
 	hex_to_rgb = hex_to_rgb,
 	rgba_to_rgb = rgba_to_rgb,
@@ -70,5 +76,6 @@ return {
 	log=log,
 	warn=warn,
 	error=error,
-	info=info
+	info=info,
+	table_length=table_length
 }
