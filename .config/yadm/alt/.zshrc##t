@@ -58,6 +58,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 source ~/.rvm/scripts/rvm
 
+eval "$(rbenv init - zsh)"
 # {% if yadm.os == "WSL" %}
 # alias neovide="neovide.exe --wsl"
 # {% endif %}
