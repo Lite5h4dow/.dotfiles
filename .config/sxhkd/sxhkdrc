@@ -8,7 +8,7 @@ super + Return
 
 # program launcher
 super + @space
-	rofi -show-icons -show drun
+	rofi -show-icons -show drun -display-drun ""
 
 # make sxhkd reload its configuration files:
 super + Escape

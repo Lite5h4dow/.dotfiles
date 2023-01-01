@@ -7,54 +7,79 @@
 }
 
 window{
-  padding: 25%;
+  padding: 20%;
   fullscreen: true;
   background-color: #2E3440AA;
 }
 
 mainbox{
-  border: 10px;
-  border-color: #2E3440;
+  border-color: rgba(0,0,0,0);
   border-radius: 10px;
-  background-color: #2E3440;
+  background-color: rgba(0,0,0,0);
   color: #4C566A;
+  spacing: 0.5em;
 }
 
 scrollbar{
-  padding: 2px;
+  padding: 5px;
   handle-color: #4C566A;
+  border-radius: 2px;
 }
 
 inputbar{
   background-color: #2E3440;
   color: #4C566A;
+  padding: 3em;
+  background-image: url("./background/paul-pastourmatzis-c60glX9yzYU-unsplash.jpg");
+  border-radius: 1em;
+  children:[prompt, entry];
 }
 
 prompt{
+  padding: 0.5em;
   text-color: #4C566A;
+  background-color: rgba(0,0,0,0);
+  text-color: #ECEFF4;
 }
 
 entry{
+  padding: 0.5em;
+  border-radius: 0.5em;
+  background-color: rgba(0,0,0, 0.6);
   text-color: #ECEFF4;
+  placeholder: "search";
 }
 
 listview{
+  spacing:0.5em;
   background-color: #2E3440;
   text-color: #ECEFF4;
-  padding: 5;
+  padding: 1em;
+  border: none;
+  border-radius: 1em;
   layout: vertical;
+  dynamic: true;
+  scrollbar: false;
+  columns: 5;
 }
 
 element{
-  padding: 1px;
-  spacing: 5px;
+  padding: 0.5em;
+  border-radius: 5px;
+  spacing: 1em;
   text-color: #ECEFF4;
   background-color: #2E3440;
   color: #2E3440;
+  orientation: vertical;
+}
+
+element-icon{
+  size: 2em;
 }
 
 element-text{
   text-color: #ECEFF4;
+  horizontal-align: 0.5;
 }
 
 element normal.normal {

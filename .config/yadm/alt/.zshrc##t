@@ -56,7 +56,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$PATH:$HOME/.rvm/bin"
 {% endif %}
 
-source ~/.rvm/scripts/rvm
+# source ~/.rvm/scripts/rvm
 
 eval "$(rbenv init - zsh)"
 # {% if yadm.os == "WSL" %}
