@@ -52,7 +52,7 @@ entry{
 
 listview{
   spacing:0.5em;
-  background-color: #2E3440;
+  background-color: #2E344077;
   text-color: #ECEFF4;
   padding: 1em;
   border: none;
@@ -65,10 +65,10 @@ listview{
 
 element{
   padding: 0.5em;
-  border-radius: 5px;
+  border-radius: 0.5em;
   spacing: 1em;
   text-color: #ECEFF4;
-  background-color: #2E3440;
+  background-color: rgba(0,0,0,0);
   color: #2E3440;
   orientation: vertical;
 }
@@ -91,5 +91,7 @@ element alternate.normal {
 }
 
 element selected{
-  background-color: #4C566A;
+  border: 0 0 2 0;
+  color: #2E3440;
+  border-color: #ffffff;
 }
