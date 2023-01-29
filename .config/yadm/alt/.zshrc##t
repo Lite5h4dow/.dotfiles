@@ -81,6 +81,8 @@ export HISTFILE=~/.zsh_history
 export HISTSIZE=10000
 export SAVEHIST=10000
 
+export REACT_EDITOR=nvim
+
 #-----zsh-autocomplete-----
 # zstyle ':autocomplete:*' list-lines 5
 # zstyle ':autocomplete:history-search:*' list-lines 5
