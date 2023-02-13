@@ -102,5 +102,9 @@ return require('packer').startup(
 
     -- emmet
     use {'mattn/emmet-vim'}
+
+    -- oh god what am i doing
+    -- copilot
+    use {'github/copilot.vim'}
   end
 )
