@@ -3,7 +3,7 @@ local o = vim.o
 local g = vim.g
 
 -- Enable Line numbers
-o.number = true
+o.relativenumber = true
 
 -- set encoding to utf8
 o.encoding = "utf8"
