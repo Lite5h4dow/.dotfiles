@@ -21,13 +21,18 @@ o.splitright = true
 -- auto reload on file change
 o.autoread = true
 
+-- copilot settings
+g.copilot_assume_mapped = true
+g.copilot_no_tab_map = true
+-- g.copilot_tab_fallback = ""
+
 -- extended configs
 require 'neovide'
+require 'rebinds'
 require 'plugins'
 require 'limelight'
 require 'statusline'
 require 'lsp'
-require 'rebinds'
 -- require 'fzf'
 
 -- Set nord as colorscheme
@@ -37,7 +42,3 @@ require"nvim-web-devicons".setup{
   default = true;
 }
 
--- copilot settings
--- g.copilot_assume_mapped = true
-g.copilot_no_tab_map = true
--- g.copilot_tab_fallback = ""
