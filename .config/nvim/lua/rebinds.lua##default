@@ -79,3 +79,6 @@ map('v', '<C-c>', '"*y', options)
 map('v', '<C-x>', '"*x', options)
 map('i', '<C-v>', '<ESC>"*p<a>', options)
 map('n', '<C-v>', '"*p', options)
+
+-- Copilot Tab remap
+map("i", "<C-tab>", "copilot#Accept('')", {expr=true, silent=true})
