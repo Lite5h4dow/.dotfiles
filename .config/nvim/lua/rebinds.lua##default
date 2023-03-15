@@ -80,5 +80,9 @@ map('v', '<C-x>', '"*x', options)
 map('i', '<C-v>', '<ESC>"*p<a>', options)
 map('n', '<C-v>', '"*p', options)
 
--- Copilot Tab remap
-map("i", "<C-j>", 'copilot#Accept("<CR>")', {expr=true, script=true, noremap=true})
+-- Copilot remaps
+map("i", "<C-l>", 'copilot#Accept("<Plug>(copilot-suggest)")', {expr=true, script=true, noremap=true})
+map("i", "<C-j>", '<Plug>(copilot-prev)', {expr=true, script=true, noremap=true})
+map("i", "<C-k>", '<Plug>(copilot-next)', {expr=true, script=true, noremap=true})
+map("i", "<C-h>", '<Plug>(copilot-dismiss)', {expr=true, script=true, noremap=true})
+
