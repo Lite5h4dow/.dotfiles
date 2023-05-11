@@ -80,6 +80,8 @@ return require('packer').startup(
       }
     }
 
+    use {'normen/vim-pio'}
+
     -- neo-tree
     use {
       "nvim-neo-tree/neo-tree.nvim",
