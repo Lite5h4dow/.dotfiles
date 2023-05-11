@@ -1,0 +1,19 @@
+theme = "nord"
+
+[editor]
+line-number = "relative"
+auto-save = true
+idle-timeout = 300
+
+[editor.file-picker]
+hidden = false
+
+[editor.statusline]
+left=["mode", "spinner", "file-type"]
+center=[ "file-name", "file-modification-indicator"]
+right=["diagnostics", "position", "position-percentage", "spacer", "version-control", "workspace-diagnostics"]
+
+[editor.whitespace.render]
+newline = "none"
+space = "all"
+tab = "none"
